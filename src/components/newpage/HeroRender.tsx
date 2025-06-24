@@ -27,7 +27,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
                     priority
                   />
 
-                  <div className="absolute inset-0 bg-black/30 sm:bg-black/20" />
+                  <div className="absolute inset-20" />
 
                   <div className="relative z-20 flex flex-col justify-center items-center text-center h-full px-4 sm:px-6 md:px-10 space-y-6 sm:space-y-8">
                     <div className="inline-block border-2 border-blue-900 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full">

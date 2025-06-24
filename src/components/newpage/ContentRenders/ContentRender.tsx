@@ -1,11 +1,10 @@
-import { RichText } from '@payloadcms/richtext-lexical/react'
-import React from 'react'
+import { RichText } from "@payloadcms/richtext-lexical/react";
 
 const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
   return (
     <div key={i} className=" w-full mt-4">
       {rows.map((row: any, rowIndex: number) => (
-        <div key={rowIndex} className="flex flex-col md:flex-row justify-between  w-full">
+        <div key={`${i}-${rowIndex}`} className="flex flex-col md:flex-row justify-between  w-full">
           {row.map((column: any, colIndex: number) => {
             let widthClass = 'w-full'
             switch (column.size) {
@@ -24,7 +23,7 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
 
             return (
               <div
-                key={colIndex}
+                key={`${i}-${rowIndex}-${colIndex}`}
                 className={`${widthClass} rounded pros px-5`}
                 style={{
                   backgroundColor: column.backgroundColor,
@@ -56,3 +55,4 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
 }
 
 export default ContentRender
+
