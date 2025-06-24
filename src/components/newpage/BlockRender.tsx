@@ -17,7 +17,7 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
   if (!layout || !Array.isArray(layout)) return null;
 
   return (
-    <section className="w-full space-y-10">
+    <section className="w-full space-y-10 flex flex-col  h-full ">
       {layout.map((block, i) => {
         switch (block.blockType) {
           case 'callToAction':
@@ -45,7 +45,7 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
             return (
               <div
                 key={i}
-                className="flex flex-col md:flex-row gap-6"
+                className="flex flex-col gap-6"
               >
                 {block.columns?.map((column: any, idx: number) => {
                   let widthClass = 'w-full';
@@ -61,19 +61,19 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                       break;
                    
                     default:
-                      widthClass = 'w-full';
+                      widthClass = 'min-w-full';
                       break;
                   }
 
                   return (
                     <div
                       key={idx}
-                      className={`${widthClass} bg-gray-50 p-6 rounded shadow prose max-w-none`}
+                      className={`${widthClass} bg-gray-50 p-6 rounded shadow prose mx-auto` }
                     >
                       {column.richText ? (
                         <RichText
                           data={column.richText}
-                          className="prose max-w-none"
+                          className="prose  w-full mx-auto"
                         />
                       ) : (
                         <p className="text-gray-500 italic">No rich content provided.</p>
