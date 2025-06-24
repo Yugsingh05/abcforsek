@@ -1,5 +1,6 @@
 'use client';
 
+import { RichText } from '@payloadcms/richtext-lexical/react';
 import React from 'react';
 
 type Block = {
@@ -21,13 +22,18 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
         switch (block.blockType) {
           case 'callToAction':
             return (
-              <div key={i} className="bg-blue-100 p-6 rounded text-center">
-                <h2 className="text-2xl font-bold">{block.title}</h2>
-                <p className="mt-2">{block.content}</p>
-                {block.button && (
+              <div
+                key={i}
+                className="bg-gradient-to-r from-blue-500 to-indigo-600 p-10 rounded-xl text-white text-center shadow-lg"
+              >
+                <h2 className="text-3xl font-bold">{block.title}</h2>
+                {block.content && <p className="mt-4 text-lg">{block.content}</p>}
+                {block.button?.label && block.button?.link && (
                   <a
                     href={block.button.link}
-                    className="mt-4 inline-block px-4 py-2 bg-blue-700 text-white rounded"
+                    className="inline-block mt-6 px-6 py-3 bg-white text-blue-700 font-semibold rounded-full hover:bg-gray-200 transition"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {block.button.label}
                   </a>
@@ -37,8 +43,44 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
 
           case 'content':
             return (
-              <div key={i} className="prose max-w-none">
-                <div dangerouslySetInnerHTML={{ __html: block.content }} />
+              <div
+                key={i}
+                className="flex flex-col md:flex-row gap-6"
+              >
+                {block.columns?.map((column: any, idx: number) => {
+                  let widthClass = 'w-full';
+                  switch (column.size) {
+                    case 'half':
+                      widthClass = 'md:w-1/2';
+                      break;
+                    case 'twoThirds':
+                      widthClass = 'md:w-2/3';
+                      break;
+                    case 'oneThird':
+                      widthClass = 'md:w-1/3';
+                      break;
+                   
+                    default:
+                      widthClass = 'w-full';
+                      break;
+                  }
+
+                  return (
+                    <div
+                      key={idx}
+                      className={`${widthClass} bg-gray-50 p-6 rounded shadow prose max-w-none`}
+                    >
+                      {column.richText ? (
+                        <RichText
+                          data={column.richText}
+                          className="prose max-w-none"
+                        />
+                      ) : (
+                        <p className="text-gray-500 italic">No rich content provided.</p>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             );
 
@@ -46,31 +88,38 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
             return (
               <div key={i} className="text-center">
                 {block.media?.url && (
-                  <img src={block.media.url} alt="Media Block" className="mx-auto max-w-full" />
+                  <img
+                    src={block.media.url}
+                    alt={block.media.alt || 'Media Block'}
+                    className="mx-auto rounded-lg shadow-md max-w-3xl"
+                  />
                 )}
               </div>
             );
 
           case 'archive':
             return (
-              <div key={i} className="bg-gray-100 p-4">
-                <h3 className="font-bold mb-2">Archive Block</h3>
-                <p>Placeholder for archive content.</p>
+              <div key={i} className="bg-gray-100 p-6 rounded-md text-center">
+                <h3 className="text-xl font-semibold mb-2">Archive Block</h3>
+                <p className="text-gray-600">Archive content goes here.</p>
               </div>
             );
 
           case 'form':
             return (
-              <div key={i}>
-                <h3 className="font-bold mb-2">Form Block</h3>
-                <p>Embed your form logic here.</p>
+              <div key={i} className="bg-white p-6 border rounded-md shadow-sm">
+                <h3 className="text-xl font-semibold mb-2">Form Block</h3>
+                <p className="text-gray-600">Your form will be rendered here.</p>
               </div>
             );
 
           default:
             return (
-              <div key={i} className="p-4 border border-red-400">
-                Unknown block: <strong>{block.blockType}</strong>
+              <div
+                key={i}
+                className="p-4 border-2 border-dashed border-red-400 rounded bg-red-50 text-center"
+              >
+                Unknown block type: <strong>{block.blockType}</strong>
               </div>
             );
         }
