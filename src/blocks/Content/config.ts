@@ -73,6 +73,12 @@ const columnFields: Field[] = [
     required: false,
 
   },
+  {
+    name:"backgroundColor",
+    type:'text',
+    defaultValue: '#ffffff',
+    required:false
+  },
   link({
     overrides: {
       admin: {

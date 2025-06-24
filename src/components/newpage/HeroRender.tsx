@@ -8,12 +8,13 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
 
   return (
     <>
+    <div className='w-full h-full px-4 md:px-12'>
       {layout.map((block, i) => {
         switch (block.blockType) {
           case 'heroLayout1':
             return (
               <div
-                className="relative w-full h-[60vh] min-h-[400px] sm:h-[70vh] sm:min-h-[500px] overflow-hidden rounded-2xl"
+                className="relative w-full h-[60vh] min-h-[400px] sm:h-[70vh] sm:min-h-[500px] overflow-hidden rounded-2xl lg:px-5"
                 key={i}
               >
                 <Image
@@ -27,8 +28,8 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
                 <div className="absolute inset-0 bg-black/30 sm:bg-black/20" />
 
                 <div className="relative z-20 flex flex-col justify-center items-center text-center h-full px-4 sm:px-6 md:px-10 space-y-6 sm:space-y-8">
-                  <div className="inline-block border-2 border-white px-4 py-1.5 sm:px-6 sm:py-2 rounded-full">
-                    <span className="text-white text-base sm:text-lg md:text-xl font-medium">
+                  <div className="inline-block border-2 border-blue-400 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full">
+                    <span className="text-white text-base sm:text-lg md:text-2xl  font-medium">
                       {block.title}
                     </span>
                   </div>
@@ -40,7 +41,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
                   {block.buttonText && (
                     <a
                       href={block.buttonLink}
-                      className="px-6 py-2 sm:px-8 sm:py-2 rounded-full text-base sm:text-lg md:text-lg font-semibold transition-colors duration-200 shadow-lg font-serif"
+                      className="px-6 py-2 sm:px-8 sm:py-2 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 shadow-lg font-serif"
                       style={{ backgroundColor: block.buttonColor, color: '#fff' }}
                     >
                       {block.buttonText}
@@ -54,7 +55,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
             return (
               <section
                 key={i}
-                className="relative h-[28rem] w-full bg-cover bg-center text-white flex items-center justify-center px-4"
+                className="relative h-[28rem] w-full bg-cover bg-center text-white flex items-center justify-center px-4 lg:px-5"
                 style={{
                   backgroundImage: block.backgroundImage?.url
                     ? `url(${block.backgroundImage.url})`
@@ -89,7 +90,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
             return (
               <section
                 key={i}
-                className="w-full px-6 py-12 text-white text-center"
+                className="w-full px-6 py-12 text-white text-center lg:px-5"
                 style={{ backgroundColor: block.backgroundColor || '#1e293b' }} // fallback to slate-800
               >
                 <div className="max-w-3xl mx-auto space-y-6">
@@ -132,6 +133,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
             return null
         }
       })}
+      </div>
     </>
   )
 }

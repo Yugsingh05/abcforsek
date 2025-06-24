@@ -1,7 +1,6 @@
 'use client'
 
 import { RichText } from '@payloadcms/richtext-lexical/react'
-import { Button } from '@payloadcms/ui'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -18,11 +17,10 @@ type BlockRenderProps = {
 
 export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
   if (!layout || !Array.isArray(layout)) return null
-
   console.log(layout)
 
   return (
-    <section className="w-full space-y-10 h-full sm:px-5">
+    <section className="w-full  h-full">
       {layout.map((block, i) => {
         switch (block.blockType) {
           case 'heroLayout1': {
@@ -84,11 +82,11 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
             }
 
             return (
-              <div key={i} className="space-y-6 w-full">
+              <div key={i} className=" w-full mt-4">
                 {rows.map((row, rowIndex) => (
                   <div
                     key={rowIndex}
-                    className="flex flex-col md:flex-row gap-6 justify-between  w-full"
+                    className="flex flex-col md:flex-row justify-between  w-full"
                   >
                     {row.map((column: any, colIndex: number) => {
                       let widthClass = 'w-full'
@@ -107,11 +105,15 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                       }
 
                       return (
-                        <div key={colIndex} className={`${widthClass} pt-2  rounded  prose`}>
+                        <div key={colIndex} className={`${widthClass} rounded pros px-5`} style={
+                            {
+                                backgroundColor: column.backgroundColor
+                            }
+                        }>
                           {column.richText && (
                             <RichText
                               data={column.richText}
-                              className={`prose mx-auto ${column.alignment === 'right' && 'lg:mr-44'} ${column.alignment === 'left' && 'xl:ml-44 '}  `}
+                              className={`prose mx-auto ${column.alignment === 'right' && 'lg:mr-44'} ${column.alignment === 'left' && 'lg:ml-32 '} mt-5 `}
                             />
                           )}
                           {column.link && (
@@ -252,7 +254,10 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
             return (
               <div
                 key={i}
-                className={`flex flex-col lg:flex-row ${block.layout === 'right' ? 'lg:flex-row-reverse' : ''} gap-6 items-center my-12`}
+                className={`flex flex-col lg:flex-row ${block.layout === 'right' ? 'lg:flex-row-reverse' : ''} gap-4 lg:gap-6 items-center py-5 px-5 md:px-16 justify-center`}
+                style={{
+                    backgroundColor: block.backgroundColor
+                }}
               >
                 <div className="w-full lg:w-1/2">
                   <Image
@@ -264,12 +269,12 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                   />
                 </div>
                 <div className={`w-full lg:w-1/2 ${block.contentAlignmentClass}`}>
-                  <div className="prose mx-auto">
+                  <div className="prose mx-auto -mt-5">
                     <RichText data={block.content} />
                   </div>
                   {block.enableButton && block.link?.url && (
                     <Link href={block.link.url} passHref legacyBehavior>
-                      <a className="inline-block mt-6 px-8 py-2 rounded-full bg-[#040f4e] text-white font-semibold transition hover:bg-blue-800 font-serif">
+                      <a className="inline-block  px-8 py-2 rounded-full bg-[#040f4e] text-white font-semibold transition hover:bg-blue-800 font-serif">
                         {block.link.label || 'Read more'}
                       </a>
                     </Link>

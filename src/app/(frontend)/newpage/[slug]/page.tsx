@@ -22,7 +22,7 @@ export default async function NewPageSlug({ params }: { params: { slug: string }
   if (!data) return notFound();
 
   return (
-    <main className="flex flex-col items-center justify-start p-6 sm:px-20 gap-10">
+    <main className="flex flex-col items-center justify-start">
       <RenderHeroLayout layout={data.hero.selectedHeroLayout} />
      <RenderBlocks layout={data.pageContent.layout} />
 

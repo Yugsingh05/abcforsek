@@ -46,6 +46,7 @@ export const ImageWithContent: Block = {
           ...rootFeatures,
           HeadingFeature({
             enabledHeadingSizes: ['h2', 'h3', 'h4' , 'h1', 'h5', 'h6'],
+            
           }),
           InlineToolbarFeature(),
           FixedToolbarFeature(),
@@ -57,6 +58,12 @@ export const ImageWithContent: Block = {
       type: 'checkbox',
       label: 'Enable Button',
     },
+     {
+    name:"backgroundColor",
+    type:'text',
+    defaultValue: '#ffffff',
+    required:false
+  },
     link({
       overrides: {
         admin: {

@@ -460,6 +460,7 @@ export interface ContentBlock {
         } | null;
         enableLink?: boolean | null;
         alignment?: ('left' | 'center' | 'right') | null;
+        backgroundColor?: string | null;
         link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
@@ -837,6 +838,7 @@ export interface ImageWithContentBlock {
     [k: string]: unknown;
   };
   enableButton?: boolean | null;
+  backgroundColor?: string | null;
   link?: {
     type?: ('reference' | 'custom') | null;
     newTab?: boolean | null;
@@ -1207,6 +1209,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
         richText?: T;
         enableLink?: T;
         alignment?: T;
+        backgroundColor?: T;
         link?:
           | T
           | {
@@ -1512,6 +1515,7 @@ export interface ImageWithContentBlockSelect<T extends boolean = true> {
   imageAlt?: T;
   content?: T;
   enableButton?: T;
+  backgroundColor?: T;
   link?:
     | T
     | {
