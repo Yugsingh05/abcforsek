@@ -13,7 +13,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
           case 'heroLayout1':
             return (
               <div
-                className="relative w-full h-[60vh] min-h-[400px] sm:h-[70vh] sm:min-h-[500px] overflow-hidden rounded-2xl shadow-xl shadow-black/40"
+                className="relative w-full h-[60vh] min-h-[400px] sm:h-[70vh] sm:min-h-[500px] overflow-hidden rounded-2xl"
                 key={i}
               >
                 <Image
