@@ -1,5 +1,6 @@
 import tailwindcssAnimate from 'tailwindcss-animate'
 import typography from '@tailwindcss/typography'
+import '@fontsource-variable/lora';
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -96,6 +97,7 @@ const config = {
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
         sans: ['var(--font-geist-sans)'],
+        lora: ['var(--font-lora)'],
       },
       keyframes: {
         'accordion-down': {

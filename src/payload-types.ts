@@ -459,6 +459,7 @@ export interface ContentBlock {
           [k: string]: unknown;
         } | null;
         enableLink?: boolean | null;
+        alignment?: ('left' | 'center' | 'right') | null;
         link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
@@ -792,7 +793,7 @@ export interface Newpage {
     )[];
   };
   pageContent: {
-    layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+    layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ImageWithContentBlock)[];
   };
   seo?: {
     title?: string | null;
@@ -808,6 +809,57 @@ export interface Newpage {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageWithContentBlock".
+ */
+export interface ImageWithContentBlock {
+  layout: 'left' | 'right';
+  image: number | Media;
+  /**
+   * Important for accessibility and SEO.
+   */
+  imageAlt?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  enableButton?: boolean | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
+  contentAlignment?: ('left' | 'center' | 'right') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'image-with-content';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1154,6 +1206,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
         size?: T;
         richText?: T;
         enableLink?: T;
+        alignment?: T;
         link?:
           | T
           | {
@@ -1432,6 +1485,7 @@ export interface NewpageSelect<T extends boolean = true> {
               mediaBlock?: T | MediaBlockSelect<T>;
               archive?: T | ArchiveBlockSelect<T>;
               formBlock?: T | FormBlockSelect<T>;
+              'image-with-content'?: T | ImageWithContentBlockSelect<T>;
             };
       };
   seo?:
@@ -1447,6 +1501,30 @@ export interface NewpageSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageWithContentBlock_select".
+ */
+export interface ImageWithContentBlockSelect<T extends boolean = true> {
+  layout?: T;
+  image?: T;
+  imageAlt?: T;
+  content?: T;
+  enableButton?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+      };
+  contentAlignment?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

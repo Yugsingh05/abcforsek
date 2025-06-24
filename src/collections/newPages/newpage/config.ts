@@ -24,6 +24,7 @@ import {
 import { authenticated } from '@/access/authenticated';
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
 import { generatePreviewNewpagePath } from '@/utilities/generatePrevieeNewPage';
+import { ImageWithContent } from '@/blocks/Image_with_content';
 
 export const NewPage: CollectionConfig = {
   slug: 'newpage',
@@ -90,7 +91,7 @@ export const NewPage: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               label: 'Content Blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock , ImageWithContent],
               required: true,
               admin: {
                 initCollapsed: true,

@@ -40,7 +40,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
                   {block.buttonText && (
                     <a
                       href={block.buttonLink}
-                      className="px-6 py-2 sm:px-8 sm:py-2.5 rounded-full text-base sm:text-lg md:text-xl font-medium transition-colors duration-200 shadow-lg font-serif"
+                      className="px-6 py-2 sm:px-8 sm:py-2 rounded-full text-base sm:text-lg md:text-lg font-semibold transition-colors duration-200 shadow-lg font-serif"
                       style={{ backgroundColor: block.buttonColor, color: '#fff' }}
                     >
                       {block.buttonText}

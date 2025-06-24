@@ -1,6 +1,9 @@
 'use client'
 
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import { Button } from '@payloadcms/ui'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 type BlockType = {
@@ -8,7 +11,6 @@ type BlockType = {
   blockName?: string | null
   [key: string]: any
 }
-
 
 type BlockRenderProps = {
   layout: BlockType[]
@@ -112,7 +114,22 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                           key={colIndex}
                           className={`${widthClass} p-2 md:p-6 rounded shadow-sm bg-white prose`}
                         >
-                          {column.richText && <RichText data={column.richText} className='prose mx-auto md:ml-44  ' />}
+                          {column.richText && (
+                            <RichText
+                              data={column.richText}
+                              className={`prose mx-auto ${column.alignment === 'right' && 'md:mr-44'} ${column.alignment === 'left' && 'md:ml-44 '}  `}
+                            />
+                          )}
+                          {column.link && (
+                            <a
+                              href={column.link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-red-500"
+                            >
+                              {column.title}
+                            </a>
+                          )}
                         </div>
                       )
                     })}
@@ -164,10 +181,7 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                 {block.selectedDocs?.map((doc: any, idx: number) => (
                   <div key={idx}>
                     <h4 className="font-medium">{doc.value.title}</h4>
-                    <a
-                      href={`/posts/${doc.value.slug}`}
-                      className="text-blue-500 underline"
-                    >
+                    <a href={`/posts/${doc.value.slug}`} className="text-blue-500 underline">
                       Read more
                     </a>
                   </div>
@@ -182,9 +196,7 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                 className="max-w-2xl mx-auto bg-white border border-gray-200 p-6 rounded shadow-sm"
               >
                 <h3 className="text-xl font-semibold mb-4">{block.form.title}</h3>
-                {block.enableIntro && block.introContent && (
-                  <RichText data={block.introContent} />
-                )}
+                {block.enableIntro && block.introContent && <RichText data={block.introContent} />}
                 <form action="#" method="POST" className="space-y-4">
                   {block.form.fields.map((field: any, idx: number) => {
                     if (field.blockType === 'email')
@@ -240,6 +252,37 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                   </button>
                 </form>
               </div>
+            )
+
+          case 'image-with-content':
+            return (
+                <div
+      key={i}
+      className={`flex flex-col md:flex-row ${block.layout === 'right' ? 'md:flex-row-reverse' : ''} gap-6 items-center my-12`}
+    >
+      <div className="w-full md:w-1/2">
+        <Image
+          src={block.image.url}
+          alt={block.imageAlt || 'Image'}
+          width={600}
+          height={400}
+          className="object-cover rounded-2xl w-full h-auto"
+        />
+      </div>
+      <div className={`w-full md:w-1/2 ${block.contentAlignmentClass}`}>
+        <div className="prose mx-auto">
+          <RichText data={block.content} />
+        </div>
+        {block.enableButton && block.link?.url && (
+          <Link href={block.link.url} passHref legacyBehavior>
+            <a className="inline-block mt-6 px-8 py-2 rounded-full bg-[#040f4e] text-white font-semibold transition hover:bg-blue-800 font-serif">
+              {block.link.label || 'Read more'}
+            </a>
+          </Link>
+        )}
+      </div>
+    </div>
+              
             )
 
           default:

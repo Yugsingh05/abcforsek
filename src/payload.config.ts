@@ -16,7 +16,7 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
-import { NewPage } from './collections/newPages/newpage/config'
+import {NewPage} from '@/collections/newPages/newpage/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
