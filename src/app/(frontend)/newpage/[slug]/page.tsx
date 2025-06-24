@@ -24,11 +24,8 @@ export default async function NewPageSlug({ params }: { params: { slug: string }
   return (
     <main className="flex flex-col items-center justify-start p-6 gap-10">
       <RenderHeroLayout layout={data.hero.selectedHeroLayout} />
-      <RenderBlocks layout={
-        data.pageContent.layout
-          ?.filter((block: any) => typeof block.blockName === 'string')
-          .map((block: any) => ({ ...block, blockName: block.blockName as string }))
-      } />
+     <RenderBlocks layout={data.pageContent.layout} />
+
     </main>
   );
 }
