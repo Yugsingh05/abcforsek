@@ -40,11 +40,11 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
                       {block.subTitle}
                     </h1>
 
-                    {block.buttonText && (
-                      <Button asChild style={{ backgroundColor: block.buttonColor, color: '#fff' }}>
+                    {block.buttonText.length > 0 && (
+                      <Button asChild style={{ backgroundColor: block.buttonColor, color: '#fff' ,fontWeight: 400}}>
                         <Link                        
                           href={block.buttonLink}
-                          className="inline-block  px-6 text-md py-2 rounded-full text-base sm:text-lg  font-semibold transition hover:opacity-95 font-serif"
+                          className="inline-block  px-8 text-md py-4 rounded-full text-base sm:text-lg  transition hover:opacity-95 font-serif"
                         >
                           {' '}
                           {block.buttonText}

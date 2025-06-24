@@ -39,7 +39,7 @@ export const heroLayout1: Block = {
     {
       name: 'buttonText',
       type: 'text',
-      required: true,
+      required: false,
     },
     {
       name: 'buttonLink',

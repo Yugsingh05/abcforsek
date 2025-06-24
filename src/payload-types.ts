@@ -744,7 +744,7 @@ export interface Newpage {
           type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
           title: string;
           subTitle: string;
-          buttonText: string;
+          buttonText?: string | null;
           buttonLink: string;
           buttonColor?: string | null;
           richText?: {
