@@ -458,28 +458,11 @@ export interface ContentBlock {
           };
           [k: string]: unknown;
         } | null;
-        enableLink?: boolean | null;
         alignment?: ('left' | 'center' | 'right') | null;
         backgroundColor?: string | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
+        buttonText?: string | null;
+        buttonLink?: string | null;
+        buttonColor?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -794,7 +777,7 @@ export interface Newpage {
     )[];
   };
   pageContent: {
-    layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ImageWithContentBlock)[];
+    layout: (ContentBlock | MediaBlock | FormBlock | ImageWithContentBlock)[];
   };
   seo?: {
     title?: string | null;
@@ -1207,19 +1190,11 @@ export interface ContentBlockSelect<T extends boolean = true> {
     | {
         size?: T;
         richText?: T;
-        enableLink?: T;
         alignment?: T;
         backgroundColor?: T;
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
+        buttonText?: T;
+        buttonLink?: T;
+        buttonColor?: T;
         id?: T;
       };
   id?: T;
@@ -1483,10 +1458,8 @@ export interface NewpageSelect<T extends boolean = true> {
         layout?:
           | T
           | {
-              cta?: T | CallToActionBlockSelect<T>;
               content?: T | ContentBlockSelect<T>;
               mediaBlock?: T | MediaBlockSelect<T>;
-              archive?: T | ArchiveBlockSelect<T>;
               formBlock?: T | FormBlockSelect<T>;
               'image-with-content'?: T | ImageWithContentBlockSelect<T>;
             };

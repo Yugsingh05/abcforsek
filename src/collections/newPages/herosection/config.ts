@@ -1,4 +1,4 @@
-import { CollectionConfig, Field } from 'payload';
+import {  Field } from 'payload';
 import {
   FixedToolbarFeature,
   HeadingFeature,

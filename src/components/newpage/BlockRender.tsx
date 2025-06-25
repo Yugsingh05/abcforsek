@@ -1,14 +1,8 @@
 'use client'
-
-import { RichText } from '@payloadcms/richtext-lexical/react'
-import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
-import { Button } from '../ui/button'
 import ImageWithContent from './ContentRenders/ImageWithContent'
 import ContentRender from './ContentRenders/ContentRender'
 import FormBlockRender from './ContentRenders/formBlockRender'
-import CTARender from './ContentRenders/CTARender'
 
 type BlockType = {
   blockType: string
@@ -22,8 +16,6 @@ type BlockRenderProps = {
 
 export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
   if (!layout || !Array.isArray(layout)) return null
-  console.log(layout)
-
   return (
     <section className="w-full  h-full">
       {layout.map((block, i) => {
@@ -64,27 +56,6 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                     className="mx-auto max-w-full rounded-lg shadow-md"
                   />
                 )}
-              </div>
-            )
-
-          case 'cta':
-            return (
-            <CTARender i={i} block={block}/>
-            )
-
-          case 'archive':
-            return (
-              <div key={i} className="bg-gray-100 p-6 rounded-md text-center">
-                <h3 className="text-xl font-semibold mb-2">Archive Block</h3>
-                {block.introContent && <RichText data={block.introContent} />}
-                {block.selectedDocs?.map((doc: any, idx: number) => (
-                  <div key={idx}>
-                    <h4 className="font-medium">{doc.value.title}</h4>
-                    <a href={`/posts/${doc.value.slug}`} className="text-blue-500 underline">
-                      Read more
-                    </a>
-                  </div>
-                ))}
               </div>
             )
 

@@ -40,7 +40,7 @@ const columnFields: Field[] = [
       features: ({ rootFeatures }) => {
         return [
           ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h1','h2', 'h3', 'h4', 'h5', 'h6'] }),
+          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
         ]
@@ -49,11 +49,7 @@ const columnFields: Field[] = [
     label: false,
   },
   {
-    name: 'enableLink',
-    type: 'checkbox',
-  },
-  {
-    name:'alignment',
+    name: 'alignment',
     type: 'select',
     defaultValue: 'left',
     options: [
@@ -71,23 +67,28 @@ const columnFields: Field[] = [
       },
     ],
     required: false,
-
   },
   {
-    name:"backgroundColor",
-    type:'text',
+    name: 'backgroundColor',
+    type: 'text',
     defaultValue: '#ffffff',
-    required:false
+    required: false,
   },
-  link({
-    overrides: {
-      admin: {
-        condition: (_data, siblingData) => {
-          return Boolean(siblingData?.enableLink)
-        },
-      },
-    },
-  }),
+  {
+    name: 'buttonText',
+    type: 'text',
+    required: false,
+  },
+  {
+    name: 'buttonLink',
+    type: 'text',
+    required: false,
+  },
+  {
+    name: 'buttonColor',
+    type: 'text',
+    required: false,
+  },
 ]
 
 export const Content: Block = {

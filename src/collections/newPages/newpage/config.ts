@@ -6,13 +6,9 @@ import { revalidateDelete , revalidatePage } from '@/collections/Pages/hooks/rev
 import { heroLayout1 } from '../herosection/HeroLayout1';
 import { heroLayout2 } from '../herosection/HeroLayout2';
 import { heroLayout3 } from '../herosection/HeroLayout3';
-
-import { CallToAction } from '@/blocks/CallToAction/config';
 import { Content } from '@/blocks/Content/config';
 import { MediaBlock } from '@/blocks/MediaBlock/config';
-import { Archive } from '@/blocks/ArchiveBlock/config';
 import { FormBlock } from '@/blocks/Form/config';
-
 import {
   MetaDescriptionField,
   MetaImageField,
@@ -20,7 +16,6 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields';
-
 import { authenticated } from '@/access/authenticated';
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
 import { generatePreviewNewpagePath } from '@/utilities/generatePrevieeNewPage';
@@ -91,7 +86,7 @@ export const NewPage: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               label: 'Content Blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock , ImageWithContent],
+              blocks: [ Content, MediaBlock, FormBlock , ImageWithContent],
               required: true,
               admin: {
                 initCollapsed: true,

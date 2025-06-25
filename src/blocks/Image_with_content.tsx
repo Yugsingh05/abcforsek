@@ -10,7 +10,7 @@ import { link } from '@/fields/link'
 export const ImageWithContent: Block = {
   slug: 'image-with-content',
   interfaceName: 'ImageWithContentBlock',
-  imageURL: 'https://icon-url-preview-for-admin.com/image-icon.svg', // Optional: admin preview icon
+  // imageURL:"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
   fields: [
     {
       name: 'layout',
@@ -26,7 +26,7 @@ export const ImageWithContent: Block = {
     {
       name: 'image',
       type: 'upload',
-      relationTo: 'media', // Replace 'media' with your collection slug for media
+      relationTo: 'media', 
       required: true,
     },
     {
