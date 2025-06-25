@@ -13,7 +13,7 @@ const ImageWithContent = ({ block, i }: Props) => {
   return (
     <div
       key={i}
-      className={`flex flex-col lg:flex-row ${block.layout === 'right' ? 'lg:flex-row-reverse' : ''} gap-4 lg:gap-12 items-center py-5 px-5 md:px-28 justify-center`}
+      className={`flex flex-col lg:flex-row ${block.layout === 'right' ? 'lg:flex-row-reverse' : ''} gap-4 lg:gap-20 items-center py-10 lg:py-16 px-5 md:px-28 justify-center`}
       style={{
         backgroundColor: block.backgroundColor,
       }}
@@ -22,8 +22,8 @@ const ImageWithContent = ({ block, i }: Props) => {
         <Image
           src={block.image.url}
           alt={block.imageAlt || 'Image'}
-          width={700}
-          height={700}
+          width={800}
+          height={800}
           className="object-cover rounded-2xl w-full h-auto"
         />
       </div>

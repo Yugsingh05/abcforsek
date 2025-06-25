@@ -38,7 +38,7 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
                 className={`${widthClass} px-5 md:px-28 w-full`}
                 style={{ backgroundColor: column.backgroundColor }}
               >
-                <div className={`flex flex-col ${alignmentWrapper} max-w-full`}>
+                <div className={`flex flex-col ${alignmentWrapper} max-w-full px-2`}>
                   {column.richText && <RichText data={column.richText} className="prose mt-5" />}
 
                   {column?.buttonText?.length > 0 && (
