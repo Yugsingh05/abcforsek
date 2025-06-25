@@ -20,6 +20,7 @@ import { authenticated } from '@/access/authenticated';
 import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
 import { generatePreviewNewpagePath } from '@/utilities/generatePrevieeNewPage';
 import { ImageWithContent } from '@/blocks/Image_with_content';
+import AdvantagesBlock from '@/blocks/AdvantagesBlock/config';
 
 export const NewPage: CollectionConfig = {
   slug: 'newpage',
@@ -86,7 +87,7 @@ export const NewPage: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               label: 'Content Blocks',
-              blocks: [ Content, MediaBlock, FormBlock , ImageWithContent],
+              blocks: [ Content, MediaBlock, FormBlock , ImageWithContent , AdvantagesBlock],
               required: true,
               admin: {
                 initCollapsed: true,

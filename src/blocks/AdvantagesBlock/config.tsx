@@ -1,0 +1,70 @@
+// src/blocks/AdvantagesBlock.ts
+import type { Block } from 'payload';
+
+ const AdvantagesBlock: Block = {
+  slug: 'advantages-block',
+  labels: {
+    singular: 'Advantages Block',
+    plural: 'Advantages Blocks',
+  },
+  fields: [
+    {
+      name: 'title',
+      type: 'text',
+      required: true,
+      defaultValue: 'Advantages of ABC',
+    },
+    {
+      name: 'subtitle',
+      type: 'text',
+      required: true,
+      defaultValue: 'There are many, including:',
+    },
+    {
+      name: 'advantages',
+      type: 'array',
+      label: 'Advantage Cards',
+      minRows: 1,
+      maxRows: 6,
+      fields: [
+        {
+          name: 'icon',
+          label: 'Icon',
+          type: 'upload',
+          relationTo: 'media', 
+          required: true,
+        },
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          required: true,
+        },
+      ],
+    },
+    {
+        name:"backgroundColor",
+        type:'text',
+        defaultValue: '#ffffff',
+        required:false
+    },
+    {
+      name: 'buttonText',
+      type: 'text',
+      defaultValue: 'Calculate price',
+    },
+    {
+      name: 'buttonLink',
+      type: 'text',
+      admin: {
+        placeholder: '/pricing',
+      },
+    },
+  ],
+};
+
+export default AdvantagesBlock;

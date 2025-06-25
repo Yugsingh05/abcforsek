@@ -5,7 +5,7 @@ import Link from 'next/link'
 const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
   console.log(rows, i)
   return (
-    <div key={`content-block-${i}`} className="w-full mt-4">
+    <div key={`content-block-${i}`} className="w-full pt-4">
       {rows.map((row: any, rowIndex: number) => (
         <div key={`row-${rowIndex}`} className="flex flex-col md:flex-row justify-between w-full">
           {row.map((column: any, colIndex: number) => {

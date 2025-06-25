@@ -777,7 +777,30 @@ export interface Newpage {
     )[];
   };
   pageContent: {
-    layout: (ContentBlock | MediaBlock | FormBlock | ImageWithContentBlock)[];
+    layout: (
+      | ContentBlock
+      | MediaBlock
+      | FormBlock
+      | ImageWithContentBlock
+      | {
+          title: string;
+          subtitle: string;
+          advantages?:
+            | {
+                icon: number | Media;
+                title: string;
+                description: string;
+                id?: string | null;
+              }[]
+            | null;
+          backgroundColor?: string | null;
+          buttonText?: string | null;
+          buttonLink?: string | null;
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'advantages-block';
+        }
+    )[];
   };
   seo?: {
     title?: string | null;
@@ -1462,6 +1485,25 @@ export interface NewpageSelect<T extends boolean = true> {
               mediaBlock?: T | MediaBlockSelect<T>;
               formBlock?: T | FormBlockSelect<T>;
               'image-with-content'?: T | ImageWithContentBlockSelect<T>;
+              'advantages-block'?:
+                | T
+                | {
+                    title?: T;
+                    subtitle?: T;
+                    advantages?:
+                      | T
+                      | {
+                          icon?: T;
+                          title?: T;
+                          description?: T;
+                          id?: T;
+                        };
+                    backgroundColor?: T;
+                    buttonText?: T;
+                    buttonLink?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
             };
       };
   seo?:

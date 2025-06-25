@@ -1,3 +1,4 @@
+import CustomButton from '@/components/CustomComponent/CustomButton'
 import { Button } from '@/components/ui/button'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import Image from 'next/image'
@@ -32,14 +33,8 @@ const ImageWithContent = ({ block, i }: Props) => {
           <RichText data={block.content} />
         </div>
         {block.enableButton && block.link?.url && (
-          <Button
-            className="inline-block  px-6 text-md py-2 rounded-full bg-[#040f4e] text-white font-semibold transition hover:opacity-95 font-serif"
-            asChild
-          >
-            <Link href={block.link.url} target="_blank" rel="noopener noreferrer">
-              {block.link.label || 'Read more'}
-            </Link>
-          </Button>
+         
+          <CustomButton buttonLink={block.link.url} buttonText={block.link.label || 'Read more'} backgroundColor={'#040f4e'}/>
         )}
       </div>
     </div>

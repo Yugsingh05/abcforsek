@@ -4,6 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
 import Link from 'next/link'
+import CustomButton from '../CustomComponent/CustomButton'
 
 export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
   if (!layout || !layout.length) return null
@@ -41,15 +42,17 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
                     </h1>
 
                     {block.buttonText.length > 0 && (
-                      <Button asChild style={{ backgroundColor: block.buttonColor, color: '#fff' ,fontWeight: 400}}>
-                        <Link                        
-                          href={block.buttonLink}
-                          className="inline-block  px-8 text-md py-4 rounded-full text-base sm:text-lg  transition hover:opacity-95 font-serif"
-                        >
-                          {' '}
-                          {block.buttonText}
-                        </Link>
-                      </Button>
+                      // <Button asChild style={{ backgroundColor: block.buttonColor, color: '#fff' ,fontWeight: 400}}>
+                      //   <Link                        
+                      //     href={block.buttonLink}
+                      //     className="inline-block  px-8 text-md py-4 rounded-full text-base sm:text-lg  transition hover:opacity-95 font-serif"
+                      //   >
+                      //     {' '}
+                      //     {block.buttonText}
+                      //   </Link>
+                      // </Button>
+
+                      <CustomButton buttonLink={block.buttonLink} buttonText={block.buttonText} backgroundColor={block.buttonColor}/>
                     )}
                   </div>
                 </div>

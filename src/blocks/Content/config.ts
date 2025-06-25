@@ -5,9 +5,9 @@ import {
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
+  OrderedListFeature,
+  UnorderedListFeature,
 } from '@payloadcms/richtext-lexical'
-
-import { link } from '@/fields/link'
 
 const columnFields: Field[] = [
   {
@@ -33,21 +33,24 @@ const columnFields: Field[] = [
       },
     ],
   },
-  {
-    name: 'richText',
-    type: 'richText',
-    editor: lexicalEditor({
-      features: ({ rootFeatures }) => {
-        return [
-          ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }),
-          FixedToolbarFeature(),
-          InlineToolbarFeature(),
-        ]
-      },
-    }),
-    label: false,
-  },
+ {
+  name: 'richText',
+  type: 'richText',
+  editor: lexicalEditor({
+    features: ({ rootFeatures }) => {
+      return [
+        ...rootFeatures,
+        HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }),
+        FixedToolbarFeature(),
+        InlineToolbarFeature(),
+        OrderedListFeature(),
+        UnorderedListFeature()
+      ]
+    },
+  }),
+  label: false,
+},
+
   {
     name: 'alignment',
     type: 'select',

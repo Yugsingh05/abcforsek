@@ -3,6 +3,8 @@ import React from 'react'
 import ImageWithContent from './ContentRenders/ImageWithContent'
 import ContentRender from './ContentRenders/ContentRender'
 import FormBlockRender from './ContentRenders/formBlockRender'
+import AdvantagesBlock from '@/blocks/AdvantagesBlock/config'
+import AdvantagesBlockRender from './ContentRenders/AdvantagesBlockRender'
 
 type BlockType = {
   blockType: string
@@ -67,6 +69,8 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
           case 'image-with-content':
             return <ImageWithContent block={block} i={i} />
 
+            case'advantages-block':
+            return <AdvantagesBlockRender title={block.title} subtitle={block.subtitle} advantages={block.advantages} buttonText={block.buttonText} buttonLink={block.buttonLink} />
           default:
             return (
               <div
