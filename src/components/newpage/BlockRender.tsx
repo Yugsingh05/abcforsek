@@ -18,6 +18,8 @@ type BlockRenderProps = {
 }
 
 export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
+
+  console.log(layout)
   if (!layout || !Array.isArray(layout)) return null
   return (
     <section className="w-full  h-full">
@@ -87,7 +89,7 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
             )
 
           case 'insurance-carousel':
-            return <InsuranceCarouselBlock heading={block.heading} slides={block.slides} key={i} />
+            return <InsuranceCarouselBlock heading={block.heading} slides={block.slides} key={i} backgroundColor={block.backgroundColor} caraousalColor={block.caraousalColor} />
 
           default:
             return (

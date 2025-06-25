@@ -817,6 +817,8 @@ export interface Newpage {
         }
       | {
           heading: string;
+          caraousalColor?: string | null;
+          backgroundColor?: string | null;
           slides: {
             image: number | Media;
             title: string;
@@ -1551,6 +1553,8 @@ export interface NewpageSelect<T extends boolean = true> {
                 | T
                 | {
                     heading?: T;
+                    caraousalColor?: T;
+                    backgroundColor?: T;
                     slides?:
                       | T
                       | {

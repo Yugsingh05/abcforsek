@@ -16,8 +16,6 @@ const page = async() => {
        
 
      })
-
-     console.log(page)
    
  const data = page.docs?.[0];
 

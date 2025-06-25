@@ -16,9 +16,13 @@ type Slide = {
 type Props = {
   heading: string;
   slides: Slide[];
+  backgroundColor?: string
+  caraousalColor?: string
 };
 
-const InsuranceCarouselBlock: React.FC<Props> = ({ heading, slides }) => {
+const InsuranceCarouselBlock: React.FC<Props> = ({ heading, slides ,backgroundColor,caraousalColor}) => {
+
+  console.log(backgroundColor,caraousalColor)
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToSlide = (index: number) => {
@@ -40,8 +44,12 @@ const InsuranceCarouselBlock: React.FC<Props> = ({ heading, slides }) => {
   if(!currentSlide) return null
 
   return (
-    <section className="bg-[#eff0f7] py-16">
-      <div className="max-w-5xl mx-auto bg-white px-8 py-10 rounded-2xl shadow-md text-center flex flex-col items-center gap-6">
+    <section className="py-16" style={{
+      backgroundColor:backgroundColor || '#eff0f7'
+    }}>
+      <div className="max-w-5xl mx-auto px-8 py-10 rounded-2xl shadow-md text-center flex flex-col items-center gap-6" style={{
+        backgroundColor:caraousalColor || '#ffffff'
+      }}>
 
         <h2 className="text-xl md:text-2xl font-bold text-[#001353]">
           {heading}
@@ -60,7 +68,7 @@ const InsuranceCarouselBlock: React.FC<Props> = ({ heading, slides }) => {
           </div>
 
           <div className="w-full md:w-1/2">
-            <h3 className="font-semibold  text-[#001353] mb-2 text-lg">
+            <h3 className="font-semibold  text-[#001353] mb-2 text-lg md:text-xl">
               {currentSlide.title}
             </h3>
             <p className="text-md text-gray-700 leading-relaxed whitespace-pre-wrap ">

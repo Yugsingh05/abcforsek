@@ -14,6 +14,19 @@ export const carouselBlock: Block = {
       label: 'Subheading',
     },
     {
+      name: 'caraousalColor',
+      type: 'text',
+      defaultValue: '#ffffff',
+      required: false,
+    },
+    {
+      name: 'backgroundColor',
+      type: 'text',
+      defaultValue: '#eff0f7',
+      required: false,
+    },
+
+    {
       name: 'slides',
       type: 'array',
       required: true,

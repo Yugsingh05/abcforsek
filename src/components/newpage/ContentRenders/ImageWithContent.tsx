@@ -14,7 +14,7 @@ const ImageWithContent = ({ block, i }: Props) => {
   return (
     <div
       key={i}
-      className={`flex flex-col lg:flex-row ${block.layout === 'right' ? 'lg:flex-row-reverse' : ''} gap-4 lg:gap-20 items-center py-10 lg:py-16 px-5 md:px-28 justify-center`}
+      className={`flex flex-col lg:flex-row ${block.layout === 'right' ? 'lg:flex-row-reverse' : ''} gap-4 lg:gap-20 items-center py-5 lg:py-5 px-5 md:px-28 justify-center`}
       style={{
         backgroundColor: block.backgroundColor,
       }}

@@ -3,9 +3,9 @@ import { RichText } from '@payloadcms/richtext-lexical/react'
 import Link from 'next/link'
 
 const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
-  console.log(rows, i)
+
   return (
-    <div key={`content-block-${i}`} className="w-full pt-4">
+    <div key={`content-block-${i}`} className="w-full ">
       {rows.map((row: any, rowIndex: number) => (
         <div key={`row-${rowIndex}`} className="flex flex-col md:flex-row justify-between w-full">
           {row.map((column: any, colIndex: number) => {
@@ -35,7 +35,7 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
             return (
               <div
                 key={`col-${rowIndex}-${colIndex}`}
-                className={`${widthClass} px-5 md:px-36 w-full`}
+                className={`${widthClass} px-5 md:px-36 w-full lg:py-8`}
                 style={{ backgroundColor: column.backgroundColor }}
               >
                 <div className={`flex flex-col ${alignmentWrapper} max-w-full px-2`}>
