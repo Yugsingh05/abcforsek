@@ -779,12 +779,11 @@ export interface Newpage {
   pageContent: {
     layout: (
       | ContentBlock
-      | MediaBlock
       | FormBlock
       | ImageWithContentBlock
       | {
           title: string;
-          subtitle: string;
+          subtitle?: string | null;
           advantages?:
             | {
                 icon: number | Media;
@@ -796,9 +795,26 @@ export interface Newpage {
           backgroundColor?: string | null;
           buttonText?: string | null;
           buttonLink?: string | null;
+          buttonColor?: string | null;
           id?: string | null;
           blockName?: string | null;
           blockType: 'advantages-block';
+        }
+      | {
+          prices?:
+            | {
+                title: string;
+                subtitle: string;
+                buttonTitle: string;
+                buttonLink: string;
+                buttonColor?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+          backgroundColor?: string | null;
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'multiple-price-block';
         }
     )[];
   };
@@ -1482,7 +1498,6 @@ export interface NewpageSelect<T extends boolean = true> {
           | T
           | {
               content?: T | ContentBlockSelect<T>;
-              mediaBlock?: T | MediaBlockSelect<T>;
               formBlock?: T | FormBlockSelect<T>;
               'image-with-content'?: T | ImageWithContentBlockSelect<T>;
               'advantages-block'?:
@@ -1501,6 +1516,24 @@ export interface NewpageSelect<T extends boolean = true> {
                     backgroundColor?: T;
                     buttonText?: T;
                     buttonLink?: T;
+                    buttonColor?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              'multiple-price-block'?:
+                | T
+                | {
+                    prices?:
+                      | T
+                      | {
+                          title?: T;
+                          subtitle?: T;
+                          buttonTitle?: T;
+                          buttonLink?: T;
+                          buttonColor?: T;
+                          id?: T;
+                        };
+                    backgroundColor?: T;
                     id?: T;
                     blockName?: T;
                   };

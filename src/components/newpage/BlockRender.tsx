@@ -3,8 +3,8 @@ import React from 'react'
 import ImageWithContent from './ContentRenders/ImageWithContent'
 import ContentRender from './ContentRenders/ContentRender'
 import FormBlockRender from './ContentRenders/formBlockRender'
-import AdvantagesBlock from '@/blocks/AdvantagesBlock/config'
 import AdvantagesBlockRender from './ContentRenders/AdvantagesBlockRender'
+import MultiplePriceDescription from './ContentRenders/MultiplePriceDescription'
 
 type BlockType = {
   blockType: string
@@ -22,7 +22,6 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
     <section className="w-full  h-full">
       {layout.map((block, i) => {
         switch (block.blockType) {
-                
           case 'content': {
             const rows: any[][] = []
             let currentRow: any[] = []
@@ -43,9 +42,7 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
               rows.push(currentRow)
             }
 
-            return (
-              <ContentRender i={i} rows={rows}/>
-            )
+            return <ContentRender i={i} rows={rows} />
           }
 
           case 'mediaBlock':
@@ -62,15 +59,26 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
             )
 
           case 'formBlock':
-            return (
-             <FormBlockRender i={i} block={block} />
-            )
+            return <FormBlockRender i={i} block={block} />
 
           case 'image-with-content':
             return <ImageWithContent block={block} i={i} />
 
-            case'advantages-block':
-            return <AdvantagesBlockRender title={block.title} subtitle={block.subtitle} advantages={block.advantages} buttonText={block.buttonText} buttonLink={block.buttonLink} />
+          case 'advantages-block':
+            return (
+              <AdvantagesBlockRender
+                title={block.title}
+                subtitle={block.subtitle}
+                advantages={block.advantages}
+                buttonText={block.buttonText}
+                buttonLink={block.buttonLink}
+                backgroundColor={block.backgroundColor}
+                buttonColor={block.buttonColor}
+              />
+            )
+
+            case 'multiple-price-block':
+              return (<MultiplePriceDescription prices={block.prices} backgroundColor={block.backgroundColor}/>)
           default:
             return (
               <div

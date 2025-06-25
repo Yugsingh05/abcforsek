@@ -17,7 +17,7 @@ import type { Block } from 'payload';
     {
       name: 'subtitle',
       type: 'text',
-      required: true,
+      required: false,
       defaultValue: 'There are many, including:',
     },
     {
@@ -64,6 +64,12 @@ import type { Block } from 'payload';
         placeholder: '/pricing',
       },
     },
+    {
+      name : 'buttonColor',
+      type: 'text',
+      defaultValue: '#040f4e',
+      required: false
+    }
   ],
 };
 

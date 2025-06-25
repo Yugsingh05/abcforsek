@@ -35,7 +35,7 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
             return (
               <div
                 key={`col-${rowIndex}-${colIndex}`}
-                className={`${widthClass} px-5 md:px-28 w-full`}
+                className={`${widthClass} px-5 md:px-36 w-full`}
                 style={{ backgroundColor: column.backgroundColor }}
               >
                 <div className={`flex flex-col ${alignmentWrapper} max-w-full px-2`}>

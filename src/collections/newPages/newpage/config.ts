@@ -7,7 +7,6 @@ import { heroLayout1 } from '../herosection/HeroLayout1';
 import { heroLayout2 } from '../herosection/HeroLayout2';
 import { heroLayout3 } from '../herosection/HeroLayout3';
 import { Content } from '@/blocks/Content/config';
-import { MediaBlock } from '@/blocks/MediaBlock/config';
 import { FormBlock } from '@/blocks/Form/config';
 import {
   MetaDescriptionField,
@@ -21,6 +20,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
 import { generatePreviewNewpagePath } from '@/utilities/generatePrevieeNewPage';
 import { ImageWithContent } from '@/blocks/Image_with_content';
 import AdvantagesBlock from '@/blocks/AdvantagesBlock/config';
+import MultiplePriceDescriptionBlock from '@/blocks/MultiplePriceDescriptionBlock/config';
 
 export const NewPage: CollectionConfig = {
   slug: 'newpage',
@@ -87,7 +87,7 @@ export const NewPage: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               label: 'Content Blocks',
-              blocks: [ Content, MediaBlock, FormBlock , ImageWithContent , AdvantagesBlock],
+              blocks: [ Content, FormBlock , ImageWithContent , AdvantagesBlock,MultiplePriceDescriptionBlock],
               required: true,
               admin: {
                 initCollapsed: true,

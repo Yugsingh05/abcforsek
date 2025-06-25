@@ -19,6 +19,9 @@ type AdvantagesBlockProps = {
   advantages: AdvantageCard[]
   buttonText?: string
   buttonLink?: string
+  backgroundColor?: string
+  buttonColor?: string
+
 }
 
 const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
@@ -27,9 +30,13 @@ const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
   advantages,
   buttonText = 'Calculate price',
   buttonLink = '#',
+  backgroundColor,
+  buttonColor
 }) => {
   return (
-    <section className="bg-[#eff0f8] py-16 px-6 text-center">
+    <section className=" py-16 px-6 text-center" style={{
+      backgroundColor:backgroundColor || '#fff'
+    }}>
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a3c]">{title}</h2>
         <p className="text-lg text-[#3e3e5f] mt-2">{subtitle}</p>
@@ -53,7 +60,7 @@ const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
         </div>
 
         {buttonText && (
-        <CustomButton buttonText={buttonText} buttonLink={buttonLink} />
+        <CustomButton buttonText={buttonText} buttonLink={buttonLink} backgroundColor={buttonColor}  />
         )}
       </div>
     </section>
