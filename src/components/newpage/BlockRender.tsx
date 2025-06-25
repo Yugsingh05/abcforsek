@@ -5,6 +5,7 @@ import ContentRender from './ContentRenders/ContentRender'
 import FormBlockRender from './ContentRenders/formBlockRender'
 import AdvantagesBlockRender from './ContentRenders/AdvantagesBlockRender'
 import MultiplePriceDescription from './ContentRenders/MultiplePriceDescription'
+import InsuranceCarouselBlock from './ContentRenders/CaraousalComponent'
 
 type BlockType = {
   blockType: string
@@ -77,8 +78,17 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
               />
             )
 
-            case 'multiple-price-block':
-              return (<MultiplePriceDescription prices={block.prices} backgroundColor={block.backgroundColor}/>)
+          case 'multiple-price-block':
+            return (
+              <MultiplePriceDescription
+                prices={block.prices}
+                backgroundColor={block.backgroundColor}
+              />
+            )
+
+          case 'insurance-carousel':
+            return <InsuranceCarouselBlock heading={block.heading} slides={block.slides} key={i} />
+
           default:
             return (
               <div

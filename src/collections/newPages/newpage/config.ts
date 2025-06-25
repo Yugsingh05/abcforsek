@@ -1,26 +1,27 @@
-import { CollectionConfig } from 'payload';
-import { slugField } from '@/fields/slug';
-import { generatePreviewPath } from '@/utilities/generatePreviewPath';
-import { populatePublishedAt } from '@/hooks/populatePublishedAt';
-import { revalidateDelete , revalidatePage } from '@/collections/Pages/hooks/revalidatePage';
-import { heroLayout1 } from '../herosection/HeroLayout1';
-import { heroLayout2 } from '../herosection/HeroLayout2';
-import { heroLayout3 } from '../herosection/HeroLayout3';
-import { Content } from '@/blocks/Content/config';
-import { FormBlock } from '@/blocks/Form/config';
+import { CollectionConfig } from 'payload'
+import { slugField } from '@/fields/slug'
+import { generatePreviewPath } from '@/utilities/generatePreviewPath'
+import { populatePublishedAt } from '@/hooks/populatePublishedAt'
+import { revalidateDelete, revalidatePage } from '@/collections/Pages/hooks/revalidatePage'
+import { heroLayout1 } from '../herosection/HeroLayout1'
+import { heroLayout2 } from '../herosection/HeroLayout2'
+import { heroLayout3 } from '../herosection/HeroLayout3'
+import { Content } from '@/blocks/Content/config'
+import { FormBlock } from '@/blocks/Form/config'
 import {
   MetaDescriptionField,
   MetaImageField,
   MetaTitleField,
   OverviewField,
   PreviewField,
-} from '@payloadcms/plugin-seo/fields';
-import { authenticated } from '@/access/authenticated';
-import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
-import { generatePreviewNewpagePath } from '@/utilities/generatePrevieeNewPage';
-import { ImageWithContent } from '@/blocks/Image_with_content';
-import AdvantagesBlock from '@/blocks/AdvantagesBlock/config';
-import MultiplePriceDescriptionBlock from '@/blocks/MultiplePriceDescriptionBlock/config';
+} from '@payloadcms/plugin-seo/fields'
+import { authenticated } from '@/access/authenticated'
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished'
+import { generatePreviewNewpagePath } from '@/utilities/generatePrevieeNewPage'
+import { ImageWithContent } from '@/blocks/Image_with_content'
+import AdvantagesBlock from '@/blocks/AdvantagesBlock/config'
+import MultiplePriceDescriptionBlock from '@/blocks/MultiplePriceDescriptionBlock/config'
+import { carouselBlock } from '@/blocks/CaraousalBlock/CaraousalBlock'
 
 export const NewPage: CollectionConfig = {
   slug: 'newpage',
@@ -41,10 +42,10 @@ export const NewPage: CollectionConfig = {
       url: ({ data, req }) => {
         const path = generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
-         collection: 'newpage',
+          collection: 'newpage',
           req,
-        });
-        return path;
+        })
+        return path
       },
     },
     preview: (data, { req }) =>
@@ -87,7 +88,14 @@ export const NewPage: CollectionConfig = {
               name: 'layout',
               type: 'blocks',
               label: 'Content Blocks',
-              blocks: [ Content, FormBlock , ImageWithContent , AdvantagesBlock,MultiplePriceDescriptionBlock],
+              blocks: [
+                Content,
+                FormBlock,
+                ImageWithContent,
+                AdvantagesBlock,
+                MultiplePriceDescriptionBlock,
+                carouselBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
@@ -143,4 +151,4 @@ export const NewPage: CollectionConfig = {
     },
     maxPerDoc: 50,
   },
-};
+}

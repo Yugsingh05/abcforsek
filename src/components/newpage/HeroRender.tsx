@@ -41,7 +41,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
                       {block.subTitle}
                     </h1>
 
-                    {block.buttonText.length > 0 && (
+                    {block?.buttonText?.length > 0 && (
                       // <Button asChild style={{ backgroundColor: block.buttonColor, color: '#fff' ,fontWeight: 400}}>
                       //   <Link                        
                       //     href={block.buttonLink}

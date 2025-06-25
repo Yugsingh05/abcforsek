@@ -1,0 +1,46 @@
+import { Block } from 'payload'
+
+export const carouselBlock: Block = {
+  slug: 'insurance-carousel',
+  labels: {
+    singular: 'Insurance Carousel',
+    plural: 'Insurance Carousels',
+  },
+  fields: [
+    {
+      name: 'heading',
+      type: 'text',
+      required: true,
+      label: 'Subheading',
+    },
+    {
+      name: 'slides',
+      type: 'array',
+      required: true,
+      minRows: 1,
+      label: 'Carousel Slides',
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          label: 'Slide Image',
+        },
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+          label: 'Top Title',
+        },
+
+        {
+          name: 'description',
+          type: 'textarea',
+          required: true,
+          label: 'Description',
+        },
+      ],
+    },
+  ],
+}

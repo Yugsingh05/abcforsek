@@ -44,7 +44,7 @@ export const heroLayout1: Block = {
     {
       name: 'buttonLink',
       type: 'text',
-      required: true,
+      required: false,
     },
     {
       name: 'buttonColor',

@@ -1,5 +1,35 @@
-import PageTemplate, { generateMetadata } from './[slug]/page'
+import { getPayload } from 'payload'
+import React from 'react'
+import configPromise from '@payload-config'
+import NotFound from './not-found'
+import { RenderHeroLayout } from '@/components/newpage/HeroRender'
+import { RenderBlocks } from '@/components/newpage/BlockRender'
 
-export default PageTemplate
+const page = async() => {
 
-export { generateMetadata }
+   const payload = await getPayload({ config: configPromise })
+     const page = await payload.find({
+       collection: 'newpage',
+       
+       limit: 1,
+       sort: 'createdAt',
+       
+
+     })
+
+     console.log(page)
+   
+ const data = page.docs?.[0];
+
+  if (!data) return NotFound();
+
+  return (
+    <main className="flex flex-col items-center justify-start">
+      <RenderHeroLayout layout={data.hero.selectedHeroLayout} />
+     <RenderBlocks layout={data.pageContent.layout} />
+
+    </main>
+  );
+}
+
+export default page

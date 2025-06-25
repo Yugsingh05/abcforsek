@@ -34,7 +34,7 @@ const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
   buttonColor
 }) => {
   return (
-    <section className=" py-16 px-6 text-center" style={{
+    <section className="py-12 sm:py-32 px-6 text-center " style={{
       backgroundColor:backgroundColor || '#fff'
     }}>
       <div className="max-w-5xl mx-auto">

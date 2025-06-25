@@ -150,8 +150,7 @@ export interface UserAuthOperations {
 export interface Page {
   id: number;
   title: string;
-  hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+  hero?: {
     richText?: {
       root: {
         type: string;
@@ -728,7 +727,7 @@ export interface Newpage {
           title: string;
           subTitle: string;
           buttonText?: string | null;
-          buttonLink: string;
+          buttonLink?: string | null;
           buttonColor?: string | null;
           richText?: {
             root: {
@@ -815,6 +814,18 @@ export interface Newpage {
           id?: string | null;
           blockName?: string | null;
           blockType: 'multiple-price-block';
+        }
+      | {
+          heading: string;
+          slides: {
+            image: number | Media;
+            title: string;
+            description: string;
+            id?: string | null;
+          }[];
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'insurance-carousel';
         }
     )[];
   };
@@ -1153,7 +1164,6 @@ export interface PagesSelect<T extends boolean = true> {
   hero?:
     | T
     | {
-        type?: T;
         richText?: T;
         links?:
           | T
@@ -1534,6 +1544,21 @@ export interface NewpageSelect<T extends boolean = true> {
                           id?: T;
                         };
                     backgroundColor?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              'insurance-carousel'?:
+                | T
+                | {
+                    heading?: T;
+                    slides?:
+                      | T
+                      | {
+                          image?: T;
+                          title?: T;
+                          description?: T;
+                          id?: T;
+                        };
                     id?: T;
                     blockName?: T;
                   };
