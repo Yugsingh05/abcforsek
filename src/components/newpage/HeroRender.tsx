@@ -7,8 +7,6 @@ import HeroRender3 from './HeroRenders/HeroRender3'
 export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
   if (!layout || !layout.length) return null
 
-  console.log(layout)
-
   return (
     <>
       <div className="w-full h-full px-4 md:px-12">
