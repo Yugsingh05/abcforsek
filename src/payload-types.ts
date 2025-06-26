@@ -829,6 +829,20 @@ export interface Newpage {
           blockName?: string | null;
           blockType: 'insurance-carousel';
         }
+      | {
+          heading: string;
+          subheading?: string | null;
+          items: {
+            icon: number | Media;
+            label: string;
+            id?: string | null;
+          }[];
+          buttonText: string;
+          buttonLink?: string | null;
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'insurance-type-block';
+        }
     )[];
   };
   seo?: {
@@ -1563,6 +1577,23 @@ export interface NewpageSelect<T extends boolean = true> {
                           description?: T;
                           id?: T;
                         };
+                    id?: T;
+                    blockName?: T;
+                  };
+              'insurance-type-block'?:
+                | T
+                | {
+                    heading?: T;
+                    subheading?: T;
+                    items?:
+                      | T
+                      | {
+                          icon?: T;
+                          label?: T;
+                          id?: T;
+                        };
+                    buttonText?: T;
+                    buttonLink?: T;
                     id?: T;
                     blockName?: T;
                   };

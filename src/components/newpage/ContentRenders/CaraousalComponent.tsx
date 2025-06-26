@@ -22,7 +22,6 @@ type Props = {
 
 const InsuranceCarouselBlock: React.FC<Props> = ({ heading, slides ,backgroundColor,caraousalColor}) => {
 
-  console.log(backgroundColor,caraousalColor)
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToSlide = (index: number) => {
