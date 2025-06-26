@@ -723,28 +723,12 @@ export interface Newpage {
   hero: {
     selectedHeroLayout: (
       | {
-          type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-          title: string;
+          logoImg: number | Media;
           subTitle: string;
           buttonText?: string | null;
           buttonLink?: string | null;
           buttonColor?: string | null;
-          richText?: {
-            root: {
-              type: string;
-              children: {
-                type: string;
-                version: number;
-                [k: string]: unknown;
-              }[];
-              direction: ('ltr' | 'rtl') | null;
-              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-              indent: number;
-              version: number;
-            };
-            [k: string]: unknown;
-          } | null;
-          heroImage?: (number | null) | Media;
+          heroImage: number | Media;
           id?: string | null;
           blockName?: string | null;
           blockType: 'heroLayout1';
@@ -1474,13 +1458,11 @@ export interface NewpageSelect<T extends boolean = true> {
               heroLayout1?:
                 | T
                 | {
-                    type?: T;
-                    title?: T;
+                    logoImg?: T;
                     subTitle?: T;
                     buttonText?: T;
                     buttonLink?: T;
                     buttonColor?: T;
-                    richText?: T;
                     heroImage?: T;
                     id?: T;
                     blockName?: T;

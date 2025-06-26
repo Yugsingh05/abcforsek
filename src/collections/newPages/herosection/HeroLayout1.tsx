@@ -14,22 +14,10 @@ export const heroLayout1: Block = {
   },
   fields: [
     {
-      name: 'type',
-      type: 'select',
-      defaultValue: 'lowImpact',
-      label: 'Type',
-      options: [
-        { label: 'None', value: 'none' },
-        { label: 'High Impact', value: 'highImpact' },
-        { label: 'Medium Impact', value: 'mediumImpact' },
-        { label: 'Low Impact', value: 'lowImpact' },
-      ],
-      required: true,
-    },
-    {
-      name: 'title',
-      type: 'text',
-      required: true,
+      name:"logoImg",
+      type:"upload",
+      relationTo:"media",
+      required:true
     },
     {
       name: 'subTitle',
@@ -53,25 +41,10 @@ export const heroLayout1: Block = {
       defaultValue: '#040f4e',
     },
     {
-      name: 'richText',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => [
-          ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-          FixedToolbarFeature(),
-          InlineToolbarFeature(),
-        ],
-      }),
-    },
-    {
       name: 'heroImage',
       type: 'upload',
       relationTo: 'media',
-      required: true,
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
-      },
+      required: true
     },
   ],
 };

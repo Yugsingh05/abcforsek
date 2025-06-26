@@ -16,13 +16,13 @@ export const NavButtonsAndSearchComponent = () => {
         buttonText="Anmeld Scalde"
         buttonLink="/search"
         backgroundColor="#040f4e"
-        className="mt-0"
+        className="mt-0 py-2.5 text-sm"
       />
       <CustomButton
         buttonText="Min Side"
         buttonLink="/search"
         backgroundColor="#7f86e5"
-        className="mt-0"
+        className="mt-0 py-2.5 text-sm"
       />
     </>
   )
