@@ -72,7 +72,7 @@ const HeroRender2: React.FC<Props> = ({ backgroundImage, heading, rating, infoCa
           </div>
 
           <p className="text-sm text-white/90 mt-2">
-            Bedømt til {rating.score} / 5 baseret på{' '}
+            Bedømt til {rating.score} baseret på{' '}
             <span className="underline">{rating.reviews.toLocaleString()} anmeldelser</span>
           </p>
         </div>

@@ -1,11 +1,14 @@
 import { Block } from 'payload';
 
+import imgUrl from '@/../public/content/insurance-grid.png'
+
 export const InsuranceTypeBlock: Block = {
   slug: 'insurance-type-block',
   labels: {
     singular: 'Insurance Grid',
     plural: 'Insurance Grids',
   },
+  imageURL: typeof imgUrl === 'string' ? imgUrl : imgUrl.src,
   fields: [
     {
         name: 'heading',

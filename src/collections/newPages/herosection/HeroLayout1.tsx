@@ -1,10 +1,6 @@
 import { Block } from "payload";
-import {
-  FixedToolbarFeature,
-  HeadingFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical';
+
+import hero from '@/../public/hero/hero1.png'
 
 export const heroLayout1: Block = {
   slug: 'heroLayout1',
@@ -12,6 +8,7 @@ export const heroLayout1: Block = {
     singular: 'Hero Layout 1',
     plural: 'Hero Layouts 1',
   },
+  imageURL: typeof hero === 'string' ? hero : hero.src,
   fields: [
     {
       name:"logoImg",

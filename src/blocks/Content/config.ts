@@ -9,6 +9,8 @@ import {
   UnorderedListFeature,
 } from '@payloadcms/richtext-lexical'
 
+import imgurl from '@/../public/content/content.png'
+
 const columnFields: Field[] = [
   {
     name: 'size',
@@ -97,6 +99,7 @@ const columnFields: Field[] = [
 export const Content: Block = {
   slug: 'content',
   interfaceName: 'ContentBlock',
+    imageURL: typeof imgurl === 'string' ? imgurl : imgurl.src,
   fields: [
     {
       name: 'columns',

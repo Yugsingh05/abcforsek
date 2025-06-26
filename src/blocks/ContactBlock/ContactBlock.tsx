@@ -1,5 +1,5 @@
 import { Block } from "payload";
-
+import imgUrl from '@/../public/content/contact-options.png'
 
 export const contactBlock: Block = {
   slug: "contact-options-block",
@@ -7,6 +7,8 @@ export const contactBlock: Block = {
     "singular": "Contact Options Block",
     "plural": "Contact Options Blocks"
   },
+
+  imageURL: typeof imgUrl === 'string' ? imgUrl : imgUrl.src,
  
   fields: [
     {

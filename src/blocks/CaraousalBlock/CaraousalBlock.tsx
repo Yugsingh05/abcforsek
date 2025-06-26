@@ -1,4 +1,5 @@
 import { Block } from 'payload'
+import imgUrl from '@/../public/content/carousal.png'
 
 export const carouselBlock: Block = {
   slug: 'insurance-carousel',
@@ -6,6 +7,7 @@ export const carouselBlock: Block = {
     singular: 'Insurance Carousel',
     plural: 'Insurance Carousels',
   },
+  imageURL: typeof imgUrl === 'string' ? imgUrl : imgUrl.src,
   fields: [
     {
       name: 'heading',

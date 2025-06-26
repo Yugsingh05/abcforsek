@@ -1,4 +1,5 @@
 import { Block } from 'payload';
+import hero from '@/../public/hero/hero2.png'
 
 export const heroLayout2: Block = {
   slug: 'heroLayout2',
@@ -6,6 +7,7 @@ export const heroLayout2: Block = {
     singular: 'Insurance Hero',
     plural: 'Insurance Heroes',
   },
+    imageURL: typeof hero === 'string' ? hero : hero.src,
   fields: [
     {
       name: 'backgroundImage',

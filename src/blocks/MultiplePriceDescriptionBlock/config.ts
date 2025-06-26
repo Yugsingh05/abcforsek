@@ -1,11 +1,13 @@
 import { Block } from "payload";
 
+import imgUrl from '@/../public/content/price-options.png'
 const MultiplePriceDescriptionBlock :Block = {
     slug:'multiple-price-block',
     labels: {
         singular: 'Multiple Price Block',
         plural: 'Multiple Price Blocks',
     },
+    imageURL: typeof imgUrl === 'string' ? imgUrl : imgUrl.src,
     fields: [
         {
             name: 'prices',

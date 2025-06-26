@@ -1,12 +1,15 @@
 // src/blocks/AdvantagesBlock.ts
 import type { Block } from 'payload';
 
+import imgUrl from '@/../public/content/advantages.png'
+
  const AdvantagesBlock: Block = {
   slug: 'advantages-block',
   labels: {
     singular: 'Advantages Block',
     plural: 'Advantages Blocks',
   },
+  imageURL: typeof imgUrl === 'string' ? imgUrl : imgUrl.src,
   fields: [
     {
       name: 'title',

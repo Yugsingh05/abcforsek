@@ -53,7 +53,7 @@ export const NewPage: CollectionConfig = {
     preview: (data, { req }) =>
       generatePreviewNewpagePath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'newpage',
+        collection: 'newpages',
         req,
       }),
   },

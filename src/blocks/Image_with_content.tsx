@@ -6,11 +6,12 @@ import {
   FixedToolbarFeature
 } from '@payloadcms/richtext-lexical'
 import { link } from '@/fields/link'
+import imgUrl from '@/../public/content/image-with-content.png'
 
 export const ImageWithContent: Block = {
   slug: 'image-with-content',
   interfaceName: 'ImageWithContentBlock',
-  // imageURL:"https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+  imageURL: typeof imgUrl === 'string' ? imgUrl : imgUrl.src,
   fields: [
     {
       name: 'layout',
