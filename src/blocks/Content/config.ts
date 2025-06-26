@@ -7,8 +7,11 @@ import {
   lexicalEditor,
   OrderedListFeature,
   UnorderedListFeature,
+  // TextColorFeature,
+  // FontSizeFeature,
 } from '@payloadcms/richtext-lexical'
 
+import { slateEditor } from '@payloadcms/richtext-slate' 
 import imgurl from '@/../public/content/content.png'
 
 const columnFields: Field[] = [
@@ -17,89 +20,77 @@ const columnFields: Field[] = [
     type: 'select',
     defaultValue: 'oneThird',
     options: [
-      {
-        label: 'One Third',
-        value: 'oneThird',
-      },
-      {
-        label: 'Half',
-        value: 'half',
-      },
-      {
-        label: 'Two Thirds',
-        value: 'twoThirds',
-      },
-      {
-        label: 'Full',
-        value: 'full',
-      },
+      { label: 'One Third', value: 'oneThird' },
+      { label: 'Half', value: 'half' },
+      { label: 'Two Thirds', value: 'twoThirds' },
+      { label: 'Full', value: 'full' },
     ],
   },
  {
   name: 'richText',
   type: 'richText',
-  editor: lexicalEditor({
-    features: ({ rootFeatures }) => {
-      return [
-        ...rootFeatures,
-        HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }),
-        FixedToolbarFeature(),
-        InlineToolbarFeature(),
-        OrderedListFeature(),
-        UnorderedListFeature()
-      ]
+  editor: slateEditor({
+    admin: {
+      elements: [
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'ul',
+        'ol',
+        'li',
+        'blockquote',
+        'link',
+        'relationship',
+        'upload',
+        'textAlign', // Only works with elements that support alignment
+      ],
+      leaves: [
+        'bold',
+        'italic',
+        'underline',
+        'strikethrough',
+        'code',
+      ],
     },
   }),
-  label: false,
-},
-
+}
+,
   {
     name: 'alignment',
     type: 'select',
     defaultValue: 'left',
     options: [
-      {
-        label: 'Left',
-        value: 'left',
-      },
-      {
-        label: 'Center',
-        value: 'center',
-      },
-      {
-        label: 'Right',
-        value: 'right',
-      },
+      { label: 'Left', value: 'left' },
+      { label: 'Center', value: 'center' },
+      { label: 'Right', value: 'right' },
     ],
-    required: false,
   },
   {
     name: 'backgroundColor',
     type: 'text',
     defaultValue: '#ffffff',
-    required: false,
   },
   {
     name: 'buttonText',
     type: 'text',
-    required: false,
   },
   {
     name: 'buttonLink',
     type: 'text',
-    required: false,
   },
   {
     name: 'buttonColor',
     type: 'text',
-    required: false,
   },
 ]
 
 export const Content: Block = {
   slug: 'content',
   interfaceName: 'ContentBlock',
-    imageURL: typeof imgurl === 'string' ? imgurl : imgurl.src,
+  imageURL: typeof imgurl === 'string' ? imgurl : imgurl.src,
   fields: [
     {
       name: 'columns',

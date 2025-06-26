@@ -1,36 +1,36 @@
-import { Button } from '@/components/ui/button'
-import { RichText } from '@payloadcms/richtext-lexical/react'
-import Link from 'next/link'
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import SlateRenderer from './SlateRemder';
 
 const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
+  console.log('rows', rows);
 
   return (
-    <div key={`content-block-${i}`} className="w-full ">
+    <div key={`content-block-${i}`} className="w-full">
       {rows.map((row: any, rowIndex: number) => (
         <div key={`row-${rowIndex}`} className="flex flex-col md:flex-row justify-between w-full">
           {row.map((column: any, colIndex: number) => {
-
-            let widthClass = 'w-full'
+            let widthClass = 'w-full';
             switch (column.size) {
               case 'half':
-                widthClass = 'md:w-1/2'
-                break
+                widthClass = 'md:w-1/2';
+                break;
               case 'twoThirds':
-                widthClass = 'md:w-2/3'
-                break
+                widthClass = 'md:w-2/3';
+                break;
               case 'oneThird':
-                widthClass = 'md:w-1/3'
-                break
+                widthClass = 'md:w-1/3';
+                break;
               default:
-                widthClass = 'min-w-full'
+                widthClass = 'min-w-full';
             }
 
             const alignmentWrapper =
               column.alignment === 'right'
                 ? 'items-end text-left'
                 : column.alignment === 'left'
-                  ? 'items-start text-left'
-                  : 'items-center text-center'
+                ? 'items-start text-left'
+                : 'items-center text-center';
 
             return (
               <div
@@ -39,7 +39,11 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
                 style={{ backgroundColor: column.backgroundColor }}
               >
                 <div className={`flex flex-col ${alignmentWrapper} max-w-full px-2`}>
-                  {column.richText && <RichText data={column.richText} className="prose mt-5" />}
+                  {column?.richText?.length > 0 && (
+                    <div className="prose mt-5  w-full">
+                     <SlateRenderer content={column.richText} />
+                    </div>
+                  )}
 
                   {column?.buttonText?.length > 0 && (
                     <div className="my-5">
@@ -48,7 +52,7 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
                         style={{
                           backgroundColor: column.buttonColor || '#000',
                         }}
-                        className={`text-white font-semibold transition hover:opacity-95 font-serif px-6 text-md py-2 rounded-full`}
+                        className="text-white font-semibold transition hover:opacity-95 font-serif px-6 text-md py-2 rounded-full"
                       >
                         <Link
                           href={column.buttonLink}
@@ -63,12 +67,12 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
                   )}
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ContentRender
+export default ContentRender;
