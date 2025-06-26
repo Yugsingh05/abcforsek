@@ -723,7 +723,7 @@ export interface Newpage {
   hero: {
     selectedHeroLayout: (
       | {
-          logoImg: number | Media;
+          logoImg?: (number | null) | Media;
           subTitle: string;
           buttonText?: string | null;
           buttonLink?: string | null;

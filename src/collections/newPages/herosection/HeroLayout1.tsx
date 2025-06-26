@@ -17,7 +17,7 @@ export const heroLayout1: Block = {
       name:"logoImg",
       type:"upload",
       relationTo:"media",
-      required:true
+      required:false
     },
     {
       name: 'subTitle',

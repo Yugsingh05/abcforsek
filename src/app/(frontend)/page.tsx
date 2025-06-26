@@ -15,7 +15,7 @@ const page = async() => {
        sort: 'createdAt',
        where:{
         slug: {
-          equals: 'this-is-test4',
+          equals: 'home',
         },
        }
      })
