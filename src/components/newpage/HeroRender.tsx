@@ -7,13 +7,15 @@ import HeroRender3 from './HeroRenders/HeroRender3'
 export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
   if (!layout || !layout.length) return null
 
+  console.log(layout)
+
   return (
     <>
       <div className="w-full h-full px-4 md:px-12">
         {layout.map((block, i) => {
           switch (block.blockType) {
             case 'heroLayout1':
-              return  <HeroRender1 i={i} block={block}/>
+              return  <HeroRender1 block={block}/>
 
             case 'heroLayout2':
               return <HeroRender2 i={i} block={block}/>
