@@ -13,8 +13,11 @@ const page = async() => {
        
        limit: 1,
        sort: 'createdAt',
-       
-
+       where:{
+        slug: {
+          equals: 'this-is-test4',
+        },
+       }
      })
    
  const data = page.docs?.[0];
