@@ -23,6 +23,7 @@ import AdvantagesBlock from '@/blocks/AdvantagesBlock/config'
 import MultiplePriceDescriptionBlock from '@/blocks/MultiplePriceDescriptionBlock/config'
 import { carouselBlock } from '@/blocks/CaraousalBlock/CaraousalBlock'
 import { InsuranceTypeBlock } from '@/blocks/insurance-grid-block/insuranceGridBlock'
+import { contactBlock } from '@/blocks/ContactBlock/ContactBlock'
 
 export const NewPage: CollectionConfig = {
   slug: 'newpage',
@@ -96,7 +97,8 @@ export const NewPage: CollectionConfig = {
                 AdvantagesBlock,
                 MultiplePriceDescriptionBlock,
                 carouselBlock,
-                InsuranceTypeBlock
+                InsuranceTypeBlock,
+                contactBlock
               ],
               required: true,
               admin: {

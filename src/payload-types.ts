@@ -834,6 +834,64 @@ export interface Newpage {
           blockName?: string | null;
           blockType: 'insurance-type-block';
         }
+      | {
+          heading: string;
+          subheading: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          description: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          contactOptions?:
+            | {
+                icon: number | Media;
+                title: string;
+                description: {
+                  root: {
+                    type: string;
+                    children: {
+                      type: string;
+                      version: number;
+                      [k: string]: unknown;
+                    }[];
+                    direction: ('ltr' | 'rtl') | null;
+                    format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                    indent: number;
+                    version: number;
+                  };
+                  [k: string]: unknown;
+                };
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+          blockName?: string | null;
+          blockType: 'contact-options-block';
+        }
     )[];
   };
   seo?: {
@@ -1590,6 +1648,23 @@ export interface NewpageSelect<T extends boolean = true> {
                         };
                     buttonText?: T;
                     buttonLink?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              'contact-options-block'?:
+                | T
+                | {
+                    heading?: T;
+                    subheading?: T;
+                    description?: T;
+                    contactOptions?:
+                      | T
+                      | {
+                          icon?: T;
+                          title?: T;
+                          description?: T;
+                          id?: T;
+                        };
                     id?: T;
                     blockName?: T;
                   };

@@ -7,6 +7,7 @@ import AdvantagesBlockRender from './ContentRenders/AdvantagesBlockRender'
 import MultiplePriceDescription from './ContentRenders/MultiplePriceDescription'
 import InsuranceCarouselBlock from './ContentRenders/CaraousalComponent'
 import InsuranceTypeGridRender from './ContentRenders/InsuranceGridRender'
+import ContactOptionsBlock from './ContentRenders/ContactRenderBlock'
 
 type BlockType = {
   blockType: string
@@ -94,6 +95,9 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
 
             case 'insurance-type-block':
               return <InsuranceTypeGridRender heading={block.heading} subheading={block.subheading} items={block.items} buttonText={block.buttonText} buttonLink={block.buttonLink} />
+
+              case 'contact-options-block':
+                return <ContactOptionsBlock heading={block.heading} subheading={block.subheading} description={block.description} contactOptions={block.contactOptions} />
 
           default:
             return (
