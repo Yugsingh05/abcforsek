@@ -24,7 +24,7 @@ export const Logo = (props: Props) => {
       loading={loading}
       fetchPriority={priority}
       
-      className={clsx('max-w-1/2 mx-auto h-[34px]', className)}
+      className={clsx('max-w-1/2 w-full h-[34px]', className)}
       src="https://abcforsikring.dk/wp-content/uploads/2021/10/Logo_blaa.png"
     />
   )
