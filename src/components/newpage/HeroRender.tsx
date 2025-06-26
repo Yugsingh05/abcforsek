@@ -16,7 +16,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
               return  <HeroRender1 block={block}/>
 
             case 'heroLayout2':
-              return <HeroRender2 i={i} block={block}/>
+              return <HeroRender2  backgroundImage={block.backgroundImage} heading={block.heading} rating={block.rating} infoCards={block.infoCards}/>
 
             case 'heroLayout3':
               return <HeroRender3 i={i} block={block}/> 

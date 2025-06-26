@@ -734,13 +734,20 @@ export interface Newpage {
           blockType: 'heroLayout1';
         }
       | {
+          backgroundImage: number | Media;
           heading: string;
-          subheading?: string | null;
-          backgroundImage?: (number | null) | Media;
-          cta?: {
-            label?: string | null;
-            link?: string | null;
+          rating: {
+            score: string;
+            reviews: number;
           };
+          infoCards?:
+            | {
+                icon?: (number | null) | Media;
+                title: string;
+                description: string;
+                id?: string | null;
+              }[]
+            | null;
           id?: string | null;
           blockName?: string | null;
           blockType: 'heroLayout2';
@@ -1470,14 +1477,21 @@ export interface NewpageSelect<T extends boolean = true> {
               heroLayout2?:
                 | T
                 | {
-                    heading?: T;
-                    subheading?: T;
                     backgroundImage?: T;
-                    cta?:
+                    heading?: T;
+                    rating?:
                       | T
                       | {
-                          label?: T;
-                          link?: T;
+                          score?: T;
+                          reviews?: T;
+                        };
+                    infoCards?:
+                      | T
+                      | {
+                          icon?: T;
+                          title?: T;
+                          description?: T;
+                          id?: T;
                         };
                     id?: T;
                     blockName?: T;
