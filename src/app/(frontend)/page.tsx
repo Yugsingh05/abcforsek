@@ -22,9 +22,11 @@ const page = async() => {
    
  const data = page.docs?.[0];
 
- console.log(data);
+//  console.log(data);
 
-//  const res = await fetch('http://localhost:3000/api/newpage').then((res) => res.json());
+//  const res = await fetch('https://localhost:3000/api/newpage').then((res) => res.json());
+
+//  console.log("res",res);
 
   if (!data) return NotFound();
 

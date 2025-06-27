@@ -53,6 +53,7 @@ const getPagesSitemap = unstable_cache(
           })
       : []
 
+      console.log(SITE_URL);
     return [...defaultSitemap, ...sitemap]
   },
   ['pages-sitemap'],

@@ -53,7 +53,7 @@ const HeroRender2: React.FC<Props> = ({ backgroundImage, heading, rating, infoCa
           src={backgroundImage.url}
           alt="Hero Background"
           fill
-          className="object-cover z-0"
+          className="object-cover z-0 rounded-xl"
           priority
         />
       )}
