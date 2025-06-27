@@ -84,7 +84,7 @@ const HeroRender2: React.FC<Props> = ({ backgroundImage, heading, rating, infoCa
               className="bg-white rounded-xl p-6 flex gap-4 items-start shadow-md border"
             >
               {card.icon?.url && (
-                <div className="bg-indigo-100 p-3 rounded-lg flex-shrink-0">
+                <div className="bg-[#9196f5] p-3 rounded-lg flex-shrink-0">
                   <Image src={card.icon.url} alt="Card Icon" width={32} height={32} />
                 </div>
               )}

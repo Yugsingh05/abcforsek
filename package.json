@@ -19,6 +19,7 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@fontsource-variable/lora": "^5.2.6",
     "@fontsource/lora": "^5.2.6",
     "@payloadcms/admin-bar": "3.43.0",
     "@payloadcms/db-postgres": "3.43.0",

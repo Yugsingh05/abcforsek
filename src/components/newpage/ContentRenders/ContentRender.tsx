@@ -3,13 +3,11 @@ import { RichText } from '@payloadcms/richtext-lexical/react'
 import Link from 'next/link'
 
 const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
-
   return (
     <div key={`content-block-${i}`} className="w-full ">
       {rows.map((row: any, rowIndex: number) => (
         <div key={`row-${rowIndex}`} className="flex flex-col md:flex-row justify-between w-full">
           {row.map((column: any, colIndex: number) => {
-
             let widthClass = 'w-full'
             switch (column.size) {
               case 'half':
@@ -39,7 +37,9 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
                 style={{ backgroundColor: column.backgroundColor }}
               >
                 <div className={`flex flex-col ${alignmentWrapper} max-w-full px-2`}>
-                  {column.richText && <RichText data={column.richText} className="prose mt-5" />}
+                  {column.richText && (
+                    <RichText data={column.richText} className="prose mt-5 md:text-xl text-[#040f4e] " />
+                  )}
 
                   {column?.buttonText?.length > 0 && (
                     <div className="my-5">
@@ -48,7 +48,7 @@ const ContentRender = ({ rows, i }: { rows: any; i: any }) => {
                         style={{
                           backgroundColor: column.buttonColor || '#000',
                         }}
-                        className={`text-white font-semibold transition hover:opacity-95 font-serif px-6 text-md py-2 rounded-full`}
+                        className={`text-white font-semibold transition hover:opacity-95  px-6 text-md py-2 rounded-full`}
                       >
                         <Link
                           href={column.buttonLink}

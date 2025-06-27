@@ -27,11 +27,11 @@ export const HeroRender3: React.FC<HeroLayout3Props> = ({
         />
       )}
       
-      <div className="absolute top-1/2 transform -translate-y-1/2 bg-[#0a1d59] p-6 md:p-7 max-w-md rounded-xl shadow-lg mx-auto sm:ml-20 z-10 " >
+      <div className="absolute top-1/2 transform -translate-y-1/2 bg-[#0a1d59] p-6 md:p-7 max-w-md rounded-xl shadow-lg mx-auto sm:ml-20 z-10  " >
         <h2 className="text-3xl font-bold mb-4" style={{ color: textColor }}>
           {heading}
         </h2>
-        <p className="text-base whitespace-pre-line" style={{ color: textColor }}>
+        <p className="text-lg whitespace-pre-line" style={{ color: textColor }}>
           {description}
         </p>
       </div>

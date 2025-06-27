@@ -38,13 +38,13 @@ const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
       backgroundColor:backgroundColor || '#fff'
     }}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a3c]">{title}</h2>
-        <p className="text-lg text-[#3e3e5f] mt-2">{subtitle}</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#040f4e]">{title}</h2>
+        <p className="text-lg text-[#040f4e] mt-2">{subtitle}</p>
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
           {advantages.map((item, i) => (
             <div key={i} className="flex flex-col items-center px-4">
-              <div className="mb-4 h-12 w-12">
+              <div className="mb-4 h-12 w-12 ">
                 <Image
                   src={item.icon.url}
                   alt={item.icon.alt || 'Icon'}
@@ -53,8 +53,8 @@ const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
                   className="mx-auto object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-[#1a1a3c] text-lg">{item.title}</h3>
-              <p className="text-sm text-[#3e3e5f] mt-2">{item.description}</p>
+              <h3 className="font-semibold text-[#040f4e] text-xl">{item.title}</h3>
+              <p className="text-sm text-[#040f4e] mt-2 sm:text-lg">{item.description}</p>
             </div>
           ))}
         </div>

@@ -68,7 +68,7 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
             return <FormBlockRender i={i} block={block} key={i} />
 
           case 'image-with-content':
-            return <ImageWithContent block={block} i={i} />
+            return <ImageWithContent block={block} i={i} key={i} />
 
           case 'advantages-block':
             return (

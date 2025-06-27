@@ -1,5 +1,4 @@
 import React from 'react';
-import { RichText } from '@payloadcms/richtext-lexical/react';
 import CustomButton from '@/components/CustomComponent/CustomButton';
 
 type PriceCard = {
@@ -27,8 +26,8 @@ const MultiplePriceDescription: React.FC<Props> = ({ prices,backgroundColor }) =
             key={index}
             className="text-center max-w-sm w-full flex flex-col items-center sm:px-4 "
           >
-            <h3 className="font-semibold text-[#1a1a3c] text-lg">{card.title}</h3>
-              <p className="text-sm text-[#3e3e5f] mt-2">{card.subtitle}</p>
+            <p className="font-semibold text-[#1a1a3c] text-xl">{card.title}</p>
+              <p className=" text-[#3e3e5f] mt-2 text-sm md:text-lg">{card.subtitle}</p>
           
             <CustomButton
               buttonText={card.buttonTitle}

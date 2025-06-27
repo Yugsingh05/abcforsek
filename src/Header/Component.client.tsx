@@ -3,13 +3,12 @@ import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { Menu, X, SearchIcon } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
-import CustomButton from '@/components/CustomComponent/CustomButton'
 import { NavButtonsAndSearchComponent } from './Nav/NavButtonAndSearchComponent'
 
 interface HeaderClientProps {
@@ -40,7 +39,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <Logo loading="eager" priority="high" />
         </Link>
 
-        {/* Hamburger Menu (mobile only) */}
         <div className="lg:hidden">
           <button
             className="text-[#040f4e] bg-white border rounded-md p-2"
@@ -50,7 +48,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           </button>
         </div>
 
-        {/* Desktop Nav + Buttons */}
         <div className="hidden lg:flex">
           <HeaderNav data={data} />
         </div>
@@ -60,7 +57,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         </div>
       </div>
 
-      {/* Mobile dropdown menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden flex flex-col items-start gap-4 pb-4 px-2 animate-slide-down mx-auto">
           <HeaderNav data={data} />

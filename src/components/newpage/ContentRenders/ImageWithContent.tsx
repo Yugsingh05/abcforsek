@@ -14,7 +14,7 @@ const ImageWithContent = ({ block, i }: Props) => {
   return (
     <div
       key={i}
-      className={`flex flex-col lg:flex-row ${block.layout === 'right' ? 'lg:flex-row-reverse' : ''} gap-4 lg:gap-20 items-center py-5 lg:py-5 px-5 md:px-28 justify-center`}
+      className={`flex flex-col lg:flex-row ${block.layout === 'right' ? 'lg:flex-row-reverse' : ''} gap-4 lg:gap-20 items-center py-5 lg:py-5 px-5 md:px-28 justify-center `}
       style={{
         backgroundColor: block.backgroundColor,
       }}
@@ -29,8 +29,8 @@ const ImageWithContent = ({ block, i }: Props) => {
         />
       </div>
       <div className={`w-full lg:w-1/2 ${block.contentAlignmentClass}`}>
-        <div className="prose mx-auto -mt-5">
-          <RichText data={block.content} />
+        <div className="prose mx-auto -mt-14 text-lg">
+          <RichText data={block.content} className='text-[#040f4e]' />
         </div>
         {block.enableButton && block.link?.url && (
          
