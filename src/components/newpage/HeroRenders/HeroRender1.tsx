@@ -1,13 +1,16 @@
+'use client'
 import CustomButton from '@/components/CustomComponent/CustomButton'
 import clsx from 'clsx';
 import Image from 'next/image'
 import React from 'react'
 
 const HeroRender1 = ({ block }: { block: any }) => {
+
+  
   return (
     <div
       className="relative w-full h-[60vh] min-h-[400px] sm:h-[70vh] sm:min-h-[500px] overflow-hidden rounded-2xl lg:px-5"
-      key={block.id}
+      key={block.heroImage.id}
     >
       <Image
         src={block.heroImage.url || '/placeholder.svg'}
