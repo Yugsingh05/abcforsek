@@ -22,6 +22,8 @@ const page = async() => {
    
  const data = page.docs?.[0];
 
+ console.log(data);
+
 //  const res = await fetch('http://localhost:3000/api/newpage').then((res) => res.json());
 
   if (!data) return NotFound();
