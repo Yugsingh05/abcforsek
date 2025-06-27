@@ -21,7 +21,8 @@ type AdvantagesBlockProps = {
   buttonLink?: string
   backgroundColor?: string
   buttonColor?: string
-
+  buttonTextColor?: string
+  textColor?: string
 }
 
 const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
@@ -31,15 +32,37 @@ const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
   buttonText = 'Calculate price',
   buttonLink = '#',
   backgroundColor,
-  buttonColor
+  buttonColor,
+  textColor,
+  buttonTextColor,
+
 }) => {
+
+  console.log(buttonTextColor, 'buttonTextColor');
   return (
-    <section className="py-12 sm:py-32 px-6 text-center " style={{
-      backgroundColor:backgroundColor || '#fff'
-    }}>
+    <section
+      className="py-12 sm:py-32 px-6 text-center "
+      style={{
+        backgroundColor: backgroundColor || '#fff',
+      }}
+    >
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#040f4e]">{title}</h2>
-        <p className="text-lg text-[#040f4e] mt-2">{subtitle}</p>
+        <h2
+          className="text-3xl md:text-4xl font-bold"
+          style={{
+            color: textColor || '#040f4e',
+          }}
+        >
+          {title}
+        </h2>
+        <p
+          className="text-lg  mt-2"
+          style={{
+            color: textColor || '#040f4e',
+          }}
+        >
+          {subtitle}
+        </p>
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
           {advantages.map((item, i) => (
@@ -53,14 +76,33 @@ const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
                   className="mx-auto object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-[#040f4e] text-xl">{item.title}</h3>
-              <p className="text-sm text-[#040f4e] mt-2 sm:text-lg">{item.description}</p>
+              <h3
+                className="font-semibold  text-xl"
+                style={{
+                  color: textColor || '#040f4e',
+                }}
+              >
+                {item.title}
+              </h3>
+              <p
+                className="text-sm  mt-2 sm:text-lg"
+                style={{
+                  color: textColor || '#040f4e',
+                }}
+              >
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
 
         {buttonText && (
-        <CustomButton buttonText={buttonText} buttonLink={buttonLink} backgroundColor={buttonColor}  />
+          <CustomButton
+            buttonText={buttonText}
+            buttonLink={buttonLink}
+            backgroundColor={buttonColor}
+            buttonTextColor={buttonTextColor}
+          />
         )}
       </div>
     </section>

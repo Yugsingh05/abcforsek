@@ -81,6 +81,8 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                 backgroundColor={block.backgroundColor}
                 buttonColor={block.buttonColor}
                 key={i}
+                textColor={block.textColor}
+                buttonTextColor={block.buttonTextColor}
               />
             )
 

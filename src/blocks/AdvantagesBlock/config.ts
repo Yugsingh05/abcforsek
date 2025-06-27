@@ -72,6 +72,18 @@ import imgUrl from '@/../public/content/advantages.png'
       type: 'text',
       defaultValue: '#040f4e',
       required: false
+    },
+    {
+      name:'buttonTextColor',
+      type: 'text',
+      defaultValue: '#fff',
+      required: false
+    },
+    {
+      name:'textColor',
+      type: 'text',
+      defaultValue: '#040f4e',
+      required: false
     }
   ],
 };
