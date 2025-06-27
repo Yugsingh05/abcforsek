@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
 
-const HeroRender3 = ({ block, i }: { block: any; i: number }) => {
+const HeroRender3 = ({ block }: { block: any }) => {
   return (
              <section
-                  key={i}
+                  key={block.id}
                   className="w-full px-6 py-12 text-white text-center lg:px-5"
                   style={{ backgroundColor: block.backgroundColor || '#1e293b' }} // fallback to slate-800
                 >

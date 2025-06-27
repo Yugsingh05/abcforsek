@@ -8,6 +8,7 @@ import MultiplePriceDescription from './ContentRenders/MultiplePriceDescription'
 import InsuranceCarouselBlock from './ContentRenders/CaraousalComponent'
 import InsuranceTypeGridRender from './ContentRenders/InsuranceGridRender'
 import ContactOptionsBlock from './ContentRenders/ContactRenderBlock'
+import Image from 'next/image'
 
 type BlockType = {
   blockType: string
@@ -20,7 +21,6 @@ type BlockRenderProps = {
 }
 
 export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
-
   if (!layout || !Array.isArray(layout)) return null
   return (
     <section className="w-full  h-full">
@@ -46,14 +46,16 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
               rows.push(currentRow)
             }
 
-            return <ContentRender i={i} rows={rows} />
+            return <ContentRender i={i} rows={rows} key={i} />
           }
 
           case 'mediaBlock':
             return (
               <div key={i} className="text-center my-8">
                 {block.media?.url && (
-                  <img
+                  <Image
+                    fill
+                    priority
                     src={block.media.url}
                     alt={block.media.alt || 'Media'}
                     className="mx-auto max-w-full rounded-lg shadow-md"
@@ -63,7 +65,7 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
             )
 
           case 'formBlock':
-            return <FormBlockRender i={i} block={block} />
+            return <FormBlockRender i={i} block={block} key={i} />
 
           case 'image-with-content':
             return <ImageWithContent block={block} i={i} />
@@ -78,6 +80,7 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                 buttonLink={block.buttonLink}
                 backgroundColor={block.backgroundColor}
                 buttonColor={block.buttonColor}
+                key={i}
               />
             )
 
@@ -86,18 +89,44 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
               <MultiplePriceDescription
                 prices={block.prices}
                 backgroundColor={block.backgroundColor}
+                key={i}
               />
             )
 
           case 'insurance-carousel':
-            return <InsuranceCarouselBlock heading={block.heading} slides={block.slides} key={i} backgroundColor={block.backgroundColor} caraousalColor={block.caraousalColor} />
+            return (
+              <InsuranceCarouselBlock
+                heading={block.heading}
+                slides={block.slides}
+                key={i}
+                backgroundColor={block.backgroundColor}
+                caraousalColor={block.caraousalColor}
+              
+              />
+            )
 
+          case 'insurance-type-block':
+            return (
+              <InsuranceTypeGridRender
+                heading={block.heading}
+                subheading={block.subheading}
+                items={block.items}
+                buttonText={block.buttonText}
+                buttonLink={block.buttonLink}
+                key={i}
+              />
+            )
 
-            case 'insurance-type-block':
-              return <InsuranceTypeGridRender heading={block.heading} subheading={block.subheading} items={block.items} buttonText={block.buttonText} buttonLink={block.buttonLink} />
-
-              case 'contact-options-block':
-                return <ContactOptionsBlock heading={block.heading} subheading={block.subheading} description={block.description} contactOptions={block.contactOptions} />
+          case 'contact-options-block':
+            return (
+              <ContactOptionsBlock
+                heading={block.heading}
+                subheading={block.subheading}
+                description={block.description}
+                contactOptions={block.contactOptions}
+                key={i}
+              />
+            )
 
           default:
             return (

@@ -10,19 +10,23 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
   return (
     <>
       <div className="w-full h-full px-4 md:px-12">
-        {layout.map((block, i) => {
-          switch (block.blockType) {
-            case 'heroLayout1':
-              return  <HeroRender1 block={block}/>
-
-            case 'heroLayout2':
-              return <HeroRender2  backgroundImage={block.backgroundImage} heading={block.heading} rating={block.rating} infoCards={block.infoCards}/>
-
-            case 'heroLayout3':
-              return <HeroRender3 i={i} block={block}/> 
-
-            default:
-              return null
+        {layout.map((block) => {
+          if (block.blockType === 'heroLayout1') {
+            return <HeroRender1 block={block}  key={block.id} />
+          } else if (block.blockType === 'heroLayout2') {
+            return (
+              <HeroRender2
+                key={block.id}
+                backgroundImage={block.backgroundImage}
+                heading={block.heading}
+                rating={block.rating}
+                infoCards={block.infoCards}
+              />
+            )
+          } else if (block.blockType === 'heroLayout3') {
+            return <HeroRender3 block={block} key={block.id} />
+          } else {
+            return null
           }
         })}
       </div>
