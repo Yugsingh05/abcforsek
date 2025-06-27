@@ -1,50 +1,42 @@
-import Image from 'next/image'
-import React from 'react'
+import Image from 'next/image';
+import { Media } from '@/payload-types';
 
-const HeroRender3 = ({ block }: { block: any }) => {
+type HeroLayout3Props = {
+  heading: string;
+  description: string;
+  image: Media;
+  textColor?: string;
+};
+
+export const HeroRender3: React.FC<HeroLayout3Props> = ({
+  heading,
+  description,
+  image,
+  textColor = '#ffffff',
+}) => {
   return (
-             <section
-                  key={block.id}
-                  className="w-full px-6 py-12 text-white text-center lg:px-5"
-                  style={{ backgroundColor: block.backgroundColor || '#1e293b' }} // fallback to slate-800
-                >
-                  <div className="max-w-3xl mx-auto space-y-6">
-                    {block.headline && (
-                      <h1 className="text-4xl font-bold leading-tight">{block.headline}</h1>
-                    )}
+    <section className="relative w-full h-[60vh] min-h-[400px] sm:h-[80vh] sm:min-h-[500px] overflow-hidden rounded-2xl">
+    
+      {image?.url && (
+        <Image
+          src={image.url}
+          alt={image.alt || 'Hero Image'}
+          fill
+          className="object-cover w-full h-full"
+          priority
+        />
+      )}
+      
+      <div className="absolute top-1/2 transform -translate-y-1/2 bg-[#0a1d59] p-6 md:p-7 max-w-md rounded-xl shadow-lg mx-auto sm:ml-20 z-10 " >
+        <h2 className="text-3xl font-bold mb-4" style={{ color: textColor }}>
+          {heading}
+        </h2>
+        <p className="text-base whitespace-pre-line" style={{ color: textColor }}>
+          {description}
+        </p>
+      </div>
+    </section>
+  );
+};
 
-                    {block.tagline && <p className="text-lg opacity-90">{block.tagline}</p>}
-
-                    {block.richText && (
-                      <div
-                        className="prose prose-invert mx-auto max-w-none"
-                        dangerouslySetInnerHTML={{ __html: block.richText }}
-                      />
-                    )}
-
-                    {block.image?.url && (
-                      <Image
-                        src={block.image.url}
-                        alt="Hero Image"
-                        width={800}
-                        height={800}
-                        className="mx-auto mt-6 rounded-lg shadow-lg max-w-xs"
-                      />
-                    )}
-
-                    {block.ctaButton?.text && block.ctaButton?.url && (
-                      <a
-                        href={block.ctaButton.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block mt-8 px-6 py-3 text-base font-medium bg-white text-black rounded-full shadow hover:bg-gray-100 transition"
-                      >
-                        {block.ctaButton.text}
-                      </a>
-                    )}
-                  </div>
-                </section>
-  )
-}
-
-export default HeroRender3
+export default HeroRender3;

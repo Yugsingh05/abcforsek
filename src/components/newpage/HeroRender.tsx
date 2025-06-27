@@ -24,7 +24,7 @@ export const RenderHeroLayout = ({ layout }: { layout: any[] }) => {
               />
             )
           } else if (block.blockType === 'heroLayout3') {
-            return <HeroRender3 block={block} key={block.id} />
+            return <HeroRender3 description={block.description} heading={block.heading} image={block.image} key={block.id} />
           } else {
             return null
           }
