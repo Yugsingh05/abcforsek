@@ -3,9 +3,9 @@ User-agent: *
 Disallow: /admin/*
 
 # Host
-Host: http://localhost:3000
+Host: https://example.com
 
 # Sitemaps
-Sitemap: http://localhost:3000/sitemap.xml
-Sitemap: http://localhost:3000/pages-sitemap.xml
-Sitemap: http://localhost:3000/posts-sitemap.xml
+Sitemap: https://example.com/sitemap.xml
+Sitemap: https://example.com/pages-sitemap.xml
+Sitemap: https://example.com/posts-sitemap.xml
