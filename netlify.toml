@@ -1,0 +1,45 @@
+[build]
+  command = "pnpm build"
+  publish = ".next"
+  ignore = "git diff --quiet HEAD^ HEAD . ../package-lock.json"
+
+[build.environment]
+  NODE_VERSION = "20.9.0"
+  NPM_FLAGS = "--version"
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# The following redirect is intended for use with most SPAs that handle routing internally.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache control for static assets
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
