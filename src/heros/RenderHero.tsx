@@ -12,14 +12,19 @@ const heroes = {
   mediumImpact: MediumImpactHero,
 }
 
-export const RenderHero: React.FC<Page['hero']> = (props) => {
-  const { type } = props || {}
+// Add the missing 'type' property to the Page['hero'] type
+type HeroProps = Page['hero'] & {
+  type?: 'highImpact' | 'lowImpact' | 'mediumImpact' | 'none' | string
+}
+
+export const RenderHero: React.FC<HeroProps> = (props) => {
+  const { type, ...restProps } = props || {}
 
   if (!type || type === 'none') return null
 
-  const HeroToRender = heroes[type]
+  const HeroToRender = heroes[type as keyof typeof heroes]
 
   if (!HeroToRender) return null
 
-  return <HeroToRender {...props} />
+  return <HeroToRender {...restProps} />
 }

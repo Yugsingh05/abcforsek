@@ -5,14 +5,18 @@ import { getPayload } from 'payload';
 import configPromise from '@payload-config'
 import { RenderBlocks } from '@/components/newpage/BlockRender';
 
-export default async function NewPageSlug({ params }: { params: { slug: string } }) {
-  const payload = await getPayload({ config: configPromise })
+
+export default async function NewPageSlug({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+  
+  const payload = await getPayload({ config: configPromise });
 
   const page = await payload.find({
     collection: 'newpage',
     where: {
       slug: {
-        equals: params.slug,
+        equals: slug,
       },
     },
   });
@@ -24,8 +28,8 @@ export default async function NewPageSlug({ params }: { params: { slug: string }
   return (
     <main className="flex flex-col items-center justify-start">
       <RenderHeroLayout layout={data.hero.selectedHeroLayout} />
-     <RenderBlocks layout={data.pageContent.layout} />
-
+      <RenderBlocks layout={data.pageContent.layout} />
     </main>
   );
 }
+

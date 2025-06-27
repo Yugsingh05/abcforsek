@@ -12,7 +12,7 @@ export const contact: (args: ContactArgs) => RequiredDataFromCollectionSlug<'pag
     slug: 'contact',
     _status: 'published',
     hero: {
-      type: 'none',
+      richText: null,  // Set to null if not using rich text
     },
     layout: [
       {
