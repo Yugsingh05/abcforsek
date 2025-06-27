@@ -12,7 +12,6 @@ type Props = {
 
 const CustomButton = ({ buttonText, buttonLink, backgroundColor, className , buttonTextColor}: Props) => {
 
-  console.log(buttonTextColor, 'buttonTextColor');
   return (
     <Button
       asChild

@@ -12,6 +12,12 @@ import imgUrl from '@/../public/content/advantages.png'
   imageURL: typeof imgUrl === 'string' ? imgUrl : imgUrl.src,
   fields: [
     {
+
+      name:'text',
+      type:'text',
+      required:false
+    },
+    {
       name: 'title',
       type: 'text',
       required: true,

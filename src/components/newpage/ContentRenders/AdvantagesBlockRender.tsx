@@ -23,6 +23,7 @@ type AdvantagesBlockProps = {
   buttonColor?: string
   buttonTextColor?: string
   textColor?: string
+  text?: string
 }
 
 const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
@@ -35,10 +36,9 @@ const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
   buttonColor,
   textColor,
   buttonTextColor,
+  text
 
 }) => {
-
-  console.log(buttonTextColor, 'buttonTextColor');
   return (
     <section
       className="py-12 sm:py-32 px-6 text-center "
@@ -47,6 +47,18 @@ const AdvantagesBlockRender: React.FC<AdvantagesBlockProps> = ({
       }}
     >
       <div className="max-w-5xl mx-auto">
+
+       {text && (
+          <p
+            className="text-[15px] -mt-5  mb-5"
+            style={{
+              color: '#4658D2',
+            
+            }}
+          >
+            {text}
+          </p>
+        )}
         <h2
           className="text-3xl md:text-4xl font-bold"
           style={{
