@@ -7,7 +7,10 @@ node_modules
 .vercel
 
 # Payload default media upload directory
-public/media/
+# public/media/
 
-public/robots.txt
-public/sitemap*.xml
+# public/robots.txt
+# public/sitemap*.xml
+
+# Local Netlify folder
+.netlify
