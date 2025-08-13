@@ -9,6 +9,8 @@ import InsuranceCarouselBlock from './ContentRenders/CaraousalComponent'
 import InsuranceTypeGridRender from './ContentRenders/InsuranceGridRender'
 import ContactOptionsBlock from './ContentRenders/ContactRenderBlock'
 import Image from 'next/image'
+import { NewTestBlock } from '@/blocks/bewblock/newBlock'
+import NewTestComponent from './ContentRenders/NewTestBlockComponent'
 
 type BlockType = {
   blockType: string
@@ -104,7 +106,6 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                 key={i}
                 backgroundColor={block.backgroundColor}
                 caraousalColor={block.caraousalColor}
-              
               />
             )
 
@@ -129,6 +130,13 @@ export const RenderBlocks: React.FC<BlockRenderProps> = ({ layout }) => {
                 contactOptions={block.contactOptions}
                 key={i}
               />
+            )
+          case 'test-block':
+            console.log("test",block)
+            return (<NewTestComponent key={i} heading={block.heading}
+              default_text={block.defaultText}
+              icon={block.icon.url}
+            />
             )
 
           default:
